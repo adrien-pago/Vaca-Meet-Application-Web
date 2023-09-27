@@ -1,0 +1,84 @@
+  /* Style CSS pour la page de connexion */
+  body {
+    background-color: #f2f2f2;
+    background-image: url(/ASSET/fond_application.jpg);
+    background-size: cover;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: xx-large;
+    color: #fefeff;
+    margin-top: 50px;
+  }
+
+/* Style CSS pour le formulaire de connexion */
+form {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+  }
+ 
+  input[type=username],input[type="text" i],input[type=usernameC],input[type=password],input[type=passwordC], input[type="email" i] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+/* CSS pour la fenêtre modale */
+ .modal {
+  display: none; /* Cacher la fenêtre modale par défaut */
+  position: fixed; /* Position fixe pour la fenêtre modale */
+  z-index: 1; /* Mettre la fenêtre modale au-dessus de tout le reste */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Activer le défilement si nécessaire */
+  background-color: rgba(0,0,0,0.4); /* Faire un fond sombre et transparent */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* Centrer la fenêtre modale */
+  padding: 20px;
+  border: 2px solid #888;
+  width: 80%; /* Largeur de la fenêtre modale */
+  max-width: 600px; /* Largeur maximale de la fenêtre modale */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+  
