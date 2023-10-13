@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="multipart/form-data">
+    <link rel="stylesheet" href="/CSS/Style_Inscription.css">
+    <title>Inscription Application</title>
+  </head>
+
+
+<body>
+    <h1>Application Camping</h1>
+    <!--Formulaire de connexion-->
+    <form method="post" id="login-form">
+      <label for="CampingName">Camping</label>
+      <input type="text" id="CampingName" name="CampingName" placeholder="Nom du camping">
+    
+      <label for="passwordC">Mot de passe</label>
+      <input type="password" id="PasswordCamping" name="PasswordCamping" placeholder="Votre mot de passe">
+
+      
+      <button type="submit">Connexion</button>
+      <button type="button" onclick="ouvre_modal()">Créer un compte</button>
+    </form>
+
+    <!-- formulaire d'inscription après le clicl "Button (Créer un compte)" -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Formulaire d'inscription sur l'application camping</h2>
+        <form id="register-form" onsubmit="register_compte(event)">
+          <label for="NomCamping">Nom du camping:</label>
+          <input type="text" id="NomCamping" name="NomCamping" required>
+
+          <label for="email">Adresse email du camping:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="NumSiretCamping">Numero de siret du camping:</label>
+          <input type="text" id="NumSiretC" name="NumSiretC" required>
+
+          <label for="password">Mot de passe:</label>
+          <input type="password" id="password" name="password" required>
+
+          <label for="agreement">
+            <input type="checkbox" id="agreement" name="agreement" required>
+            J'accepte les termes et conditions
+          </label>
+          <button>Créer un compte</button>
+        </form>
+      </div>
+    </div> 
+    
+    <script src="/JS/Login_Camping.js"></script>
+    <script src="/JS/Modal_Inscription_Camping.js"></script>
+    <script src="/JS/Register_Camping.js"></script>
+  </body>
+</html>
