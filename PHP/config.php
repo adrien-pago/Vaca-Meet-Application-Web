@@ -1,7 +1,7 @@
 <?php
 // Configuration de la base de données
 $servername = "localhost";
-$dbname = "Db_Camping";
-$dbusername = "harico";
-$dbpassword = "R%e19q05j";
+$dbname = "APPLICATION_CAMPING";
+$dbusername = "adrien_camping";
+$dbpassword = "nu9J556~z";
 ?>
