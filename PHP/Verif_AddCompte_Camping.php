@@ -1,7 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 set_include_path(get_include_path() . PATH_SEPARATOR . '/var/www/vhosts/pago-family-games.com/httpdocs/vendor');
 
-error_log('Erreur lors de l\'envoi du message.');
+//error_log('Erreur lors de l\'envoi du message.');
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     http_response_code(405);
     $response_array['status'] = 'error';
@@ -24,7 +28,7 @@ use PHPMailer\PHPMailer\Exception;
 $response_array = array();
 
 // Se connecter à la base de données (Inclure les informations de connexion depuis le fichier de configuration)
-require_once 'db_config.php';
+require_once 'config.php';
 
 // Se connecter à la base de données
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
@@ -38,7 +42,7 @@ $NumeroSiret = $_POST['NumSiretC'];
 $password = $_POST['password'];
 
 // Vérifier si l'adresse email est déjà utilisé dans la base de données
-$sql = "SELECT * FROM USER WHERE EMAIL='$email'";
+$sql = "SELECT * FROM CAMPING WHERE EMAIL='$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -51,7 +55,7 @@ if ($result->num_rows > 0) {
 }
 
 // Vérifier si L'userName  est déjà utilisé dans la base de données
-$sql = "SELECT * FROM USER WHERE NomCamping='$NomCamping'";
+$sql = "SELECT * FROM CAMPING WHERE NOM_CAMPING='$NomCamping'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -68,8 +72,8 @@ $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 // Générer un jeton de confirmation aléatoire
 $confirm_token = bin2hex(random_bytes(32));
 //Lien de confirmation
-$confirmation_link = '/PHP/confirm_Token.php?token=' . $confirm_token;
-
+$base_url = "http://vaca-meet.fr"; // votre domaine actuel.
+$confirmation_link = $base_url . '/PHP/confirm_Token.php?token=' . $confirm_token;
 
 
 // Envoyer un e-mail de confirmation
@@ -80,14 +84,14 @@ try {
     $mail->isSMTP();                                     
     $mail->Host = 'smtp.ionos.fr';                      
     $mail->SMTPAuth = true;                              
-    $mail->Username = 'support-technique@pago-family-games.com'; 
-    $mail->Password = 'Supp@rtpagofamilygames7465';              
+    $mail->Username = 'adrien-pago@vaca-meet.fr'; 
+    $mail->Password = 'RG3SrzY7PhvnWQh';              
     $mail->SMTPSecure = 'tls';                           
     $mail->Port = 587;
 
   
     // Configurer les paramètres de l'e-mail
-    $mail->setFrom('Support-Technique@pago-family-games.com', 'Support Technique');
+    $mail->setFrom('adrien-pago@vaca-meet.fr', 'Support Technique');
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -106,7 +110,7 @@ try {
 
  
 // Insérer les données dans la base de données
-$sql = "INSERT INTO USER (USERNAME, PASSWORD, EMAIL, CONFIRM_TOKEN) VALUES ('$username', '$hashed_password', '$email', '$confirm_token')";
+$sql = "INSERT INTO CAMPING (NOM_CAMPING, EMAIL, NUM_SIRET, MAP, PASSWORD,  TOKEN_CONFIRM) VALUES ('$NomCamping','$email', '$NumeroSiret', '',  '$hashed_password' , '$confirm_token')";
 if ($conn->query($sql) === TRUE) {
     // Si l'insertion est réussie, retourner un message de succès
     $response_array['status'] = 'success';
