@@ -32,6 +32,7 @@ function register_compte(event) {
             document.getElementById("email").value = "";
             document.getElementById("NomCamping").value = "";
             document.getElementById("password").value = "";
+			modal.style.display = "none";
             window.location.href = "/Inscription_Camping.html";
           } else {
             alert(response.message);
