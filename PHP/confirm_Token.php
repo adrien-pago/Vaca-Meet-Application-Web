@@ -1,6 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Se connecter à la base de données (Inclure les informations de connexion depuis le fichier de configuration)
-require_once 'db_config.php';
+require_once 'config.php';
 
 // Se connecter à la base de données
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
@@ -11,12 +15,14 @@ if ($conn->connect_error) {
 // Récupérer le jeton de confirmation à partir de l'URL
 $confirm_token = $_GET['token'];
 // Vérifier si le jeton de confirmation existe dans la base de données
-$sql = "SELECT * FROM USER WHERE CONFIRM_TOKEN='$confirm_token'";
+$sql = "SELECT * FROM CAMPING WHERE TOKEN_CONFIRM ='$confirm_token'";
 $result = $conn->query($sql);
+echo "Jeton récupéré : " . $confirm_token . "<br>";
+
 
 if ($result->num_rows == 1) {
     // Si le jeton de confirmation est valide, mettre à jour la colonne `TOP_USER_CONFIRMED` à 1
-    $sql = "UPDATE USER SET TOP_USER_CONFIRMED=1 WHERE CONFIRM_TOKEN='$confirm_token'";
+    $sql = "UPDATE CAMPING SET TOP_USER_CONFIRMED=1 WHERE TOKEN_CONFIRM ='$confirm_token'";
     if ($conn->query($sql) === TRUE) {
         // Afficher un message de confirmation à l'utilisateur
         echo "Votre compte a été confirmé avec succès.";
