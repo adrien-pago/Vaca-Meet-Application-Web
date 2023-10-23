@@ -35,8 +35,8 @@ document.getElementById("login-form").addEventListener("submit", function (event
       }
     };
     var formData = new FormData();
-    formData.append('usernameC', usernameC);
-    formData.append('passwordC', passwordC);
+	formData.append('CampingName', CampingName);
+	formData.append('PasswordCamping', PasswordCamping);
     xhr.send(formData);
   
     // Empêcher le formulaire d'être soumis
