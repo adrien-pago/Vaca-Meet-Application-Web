@@ -12,18 +12,19 @@
 
 <body>
     <h1>Application Camping</h1>
+   
     <!--Formulaire de connexion-->
-    <form method="post" id="login-form">
-      <label for="CampingName">Camping</label>
-      <input type="text" id="CampingName" name="CampingName" placeholder="Nom du camping">
-    
-      <label for="passwordC">Mot de passe</label>
-      <input type="password" id="PasswordCamping" name="PasswordCamping" placeholder="Votre mot de passe">
+	<form method="post" id="login-form" action="/PHP/Verif_login_Camping.php">
+		<label for="CampingName">Camping</label>
+		<input type="text" id="CampingName" name="CampingName" placeholder="Nom du camping">
 
-      
-      <button type="submit">Connexion</button>
-      <button type="button" onclick="ouvre_modal()">Créer un compte</button>
-    </form>
+		<label for="passwordC">Mot de passe</label>
+		<input type="password" id="PasswordCamping" name="PasswordCamping" placeholder="Votre mot de passe">
+
+		<button type="submit">Connexion</button>
+		<button type="button" onclick="ouvre_modal()">Créer un compte</button>
+	</form>
+
 
     <!-- formulaire d'inscription après le clicl "Button (Créer un compte)" -->
     <div id="modal" class="modal">
