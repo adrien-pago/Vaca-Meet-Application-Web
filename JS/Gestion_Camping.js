@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+<<<<<<< HEAD
 
     // Récupération de l'ID du camping depuis le formulaire
     var id_camping = document.getElementById('campingForm').elements['id'].value; 
@@ -17,6 +18,17 @@ document.addEventListener("DOMContentLoaded", function() {
             let tableBody = document.getElementById("tableBody");
             tableBody.innerHTML = "";
 
+=======
+    // Remplacez cette valeur par l'ID_CAMPING récupéré lors de la connexion
+    const id_camping = "VOTRE_ID_CAMPING";
+
+    function fetchData() {
+        fetch(`fetchData.php?id_camping=${id_camping}`)
+        .then(response => response.json())
+        .then(data => {
+            let tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = "";
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
             data.forEach(row => {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
@@ -31,15 +43,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
                 tableBody.appendChild(tr);
             });
+<<<<<<< HEAD
         })
         .catch(error => {
             console.error('Erreur lors de la récupération des données :', error);
+=======
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
         });
     }
 
     fetchData();
 
+<<<<<<< HEAD
     // Ajout d'une nouvelle ligne au tableau pour une entrée
+=======
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
     document.getElementById("addRow").addEventListener("click", function() {
         let tableBody = document.getElementById("tableBody");
         let tr = document.createElement("tr");
@@ -56,7 +74,10 @@ document.addEventListener("DOMContentLoaded", function() {
         tableBody.insertBefore(tr, tableBody.firstChild);
     });
 
+<<<<<<< HEAD
     // Gestion des événements sur les boutons de chaque ligne du tableau
+=======
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
     document.getElementById("tableBody").addEventListener("click", function(e) {
         if (e.target.classList.contains("edit")) {
             // Code pour éditer la ligne
