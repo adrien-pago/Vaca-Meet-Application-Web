@@ -16,8 +16,14 @@ header('Content-Type: application/json');
 $username = isset($_POST['CampingName']) ? $_POST['CampingName'] : '';
 $password = isset($_POST['PasswordCamping']) ? $_POST['PasswordCamping'] : '';
 
+<<<<<<< HEAD
 require_once 'config.php';
 
+=======
+
+require_once 'config.php';
+
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if ($conn->connect_error) {
    die("La connexion à la base de données a échoué : " . $conn->connect_error);
@@ -38,23 +44,31 @@ if ($result->num_rows == 1) {
         if ($row['TOP_USER_CONFIRMED'] == 1) {
             $response_array['status'] = 'success';
             $response_array['message'] = 'Vous êtes connecté avec succès.';
+<<<<<<< HEAD
             $response_array['id'] = $row['ID_CAMPING']; // Pur récupérer 'ID_CAMPING' .
+=======
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
 			echo json_encode($response_array);
         } else {
-            // Si l'utilisateur existe et que le mot de passe est correct mais que son compte n'est pas confirmé, retourner un message d'erreur
+		// Si l'utilisateur existe et que le mot de passe est correct mais que son compte n'est pas confirmé, retourner un message d'erreur
             $response_array['status'] = 'error';
             $response_array['message'] = 'Votre compte n\'a pas encore été confirmé. Veuillez vérifier votre boîte e-mail.';
             echo json_encode($response_array);
         }
+		 // Si le mot de passe est incorrect, retourner un message d'erreur
     } else {
-        // Si le mot de passe est incorrect, retourner un message d'erreur
         $response_array['status'] = 'error';
         $response_array['message'] = 'Le mot de passe est incorrect.';
         echo json_encode($response_array);
     }
+<<<<<<< HEAD
 }
 else {
     //Si le nom du camping n'existe pas, retourner un message d'erreur
+=======
+	//Si le nom du camping n'existe pas, retourner un message d'erreur
+} else {
+>>>>>>> f051e1761a7f25637fcc9dbeb025f303695b222a
     $response_array['status'] = 'error';
     $response_array['message'] = 'Le nom d\'utilisateur est incorrect.';
     echo json_encode($response_array);
