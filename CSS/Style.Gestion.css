@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/ASSET/fond_gestion.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.gestion_tableau {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.structure{
+    margin-right: 3%; /* marge uniquement à droite */
+    size: 2vh;
+}
+.planning{
+    margin-left: 3%; /* marge uniquement à gauche */
+    size: 2vh;
+}
+
+table {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 100%;
+    max-width: 90vw; /* Utilisation de vw pour la largeur maximale */
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2); /* Utilisation de rem pour l'ombre */
+    border-radius: 0.5rem; /* Utilisation de rem pour les coins arrondis */
+}
+
+th, td {
+    padding: 1rem; /* Utilisation de rem pour le padding */
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem; /* Utilisation de rem pour la taille de la police */
+    margin-left: 5%;
+    margin-bottom: 0.5%;
+}
+
+#addRow {
+    padding: 1rem 2rem; /* Utilisation de rem pour le padding du bouton */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem; /* Utilisation de rem pour les coins arrondis du bouton */
+}
+
+#addRow:hover {
+    background-color: #45a049;
+}
