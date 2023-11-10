@@ -24,7 +24,7 @@ function login() {
               // Créer un formulaire
               var form = document.createElement('form');
               form.method = 'POST';
-              form.action = 'Gestion_Camping.html';
+              form.action = 'Gestion_Camping.php';
 
               // Ajouter l'ID du camping comme champ caché
               var hiddenField = document.createElement('input');
@@ -32,6 +32,12 @@ function login() {
               hiddenField.name = 'id';
               hiddenField.value = response.id;
               form.appendChild(hiddenField);
+               // Ajouter le nom du camping comme champ caché
+               var hiddenField2 = document.createElement('input');
+               hiddenField2.type = 'hidden';
+               hiddenField2.name = 'CampingName';
+               hiddenField2.value = CampingName;  // Utilisez la variable CampingName que vous avez déjà récupérée
+               form.appendChild(hiddenField2);
 
               // Ajouter le formulaire au corps de la page et le soumettre
               document.body.appendChild(form);
