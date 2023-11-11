@@ -21,14 +21,15 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <!-- ------------------------------------->
 
     <div class="gestion_tableau">
-        <div class="structure">
+        <div class="structure" id="gestionStructure">
             <h1>Gestion Structure</h1>
         </div>
-        <div class="planning">
+        <div class="planning" id="gestionPlanning">
             <h1>Gestion Planning</h1>
         </div>
     </div>
-
+  
+    <div id="tableau" style="display: none;">
     <button id="addRow">Rajouter une structure</button>
     <table>
         <thead>
@@ -41,13 +42,14 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
             </tr>
         </thead>
         <tbody id="tableBody">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <!-- Les lignes seront ajoutées dynamiquement ici -->
         </tbody>
     </table>
+    </div>
+
+    <div id="planning" style="display: none;">
+        <!-- Contenu de la planification ici -->
+    </div>
     
     <script>
         var campingId = "<?php echo $campingId; ?>";  // Variable JavaScript pour l'ID du camping
