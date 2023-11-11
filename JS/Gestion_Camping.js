@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
+
     // Récupère les informations du camping avec le bon ID
     function fetchData() {
         fetch(`/PHP/API_Fetch.php?id_camping=${id_camping}`)
@@ -197,4 +198,36 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
     });
-});
+
+
+
+    ///////////// Gestion Element Actif //////////////////////////////
+     var gestionStructureBtn = document.getElementById('gestionStructure');
+     var gestionPlanningBtn = document.getElementById('gestionPlanning');
+     var tableau = document.getElementById('tableau'); 
+     var planning = document.getElementById('planning'); 
+ 
+     if (gestionStructureBtn && gestionPlanningBtn && tableau && planning) {
+         gestionStructureBtn.addEventListener('click', function() {
+             console.log('Gestion Structure clicked');
+             tableau.style.display = 'block';
+             planning.style.display = 'none';
+             this.classList.add('active');
+             gestionPlanningBtn.classList.remove('active');
+         });
+ 
+         gestionPlanningBtn.addEventListener('click', function() {
+             console.log('Gestion Planning clicked');
+             tableau.style.display = 'none';
+             planning.style.display = 'block';
+             this.classList.add('active');
+             gestionStructureBtn.classList.remove('active');
+         });
+     } else {
+         console.error('Un ou plusieurs éléments requis sont introuvables dans le DOM');
+     }
+ });
+
+
+
+
