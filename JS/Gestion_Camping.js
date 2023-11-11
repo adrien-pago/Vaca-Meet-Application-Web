@@ -199,8 +199,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
     });
 
-
-
     ///////////// Gestion Element Actif //////////////////////////////
      var gestionStructureBtn = document.getElementById('gestionStructure');
      var gestionPlanningBtn = document.getElementById('gestionPlanning');
