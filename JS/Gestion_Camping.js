@@ -232,6 +232,7 @@ document.addEventListener("DOMContentLoaded", function() {
             defaultView: 'agendaWeek', // Définir la vue par semaine par défaut
             slotDuration: '00:30:00', // Durée de chaque intervalle (30 minutes)
             slotLabelInterval: '01:00:00', // Fréquence d'affichage des étiquettes d'heure (1 heure)
+            contentHeight: 'auto', // Ajuster la hauteur du contenu automatiquement
             
             // Augmenter la hauteur des lignes
             slotLabelFormat: {
