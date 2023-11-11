@@ -11,7 +11,14 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des structures</title>
     <link rel="stylesheet" href="/CSS/Style_Gestion.css">
+     <!-- Planning bibliothèque fullcalendar-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
 </head>
+
 <body>
     <!-- Formulaire caché pour récupérer l'ID et le nom du camping -->
     <form id="campingForm" method="POST" style="display: none;">
@@ -48,8 +55,11 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </div>
 
     <div id="planning" style="display: none;">
-        <!-- Contenu de la planification ici -->
+    <div id="calendar"></div>
+        <!-- Le contenu du planning sera généré ici -->
     </div>
+</div>
+
     
     <script>
         var campingId = "<?php echo $campingId; ?>";  // Variable JavaScript pour l'ID du camping
