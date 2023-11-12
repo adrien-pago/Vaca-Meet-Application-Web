@@ -226,47 +226,26 @@ document.addEventListener("DOMContentLoaded", function() {
      }
 
      ////////////////////PLanning/////////////////////////
-     $(document).ready(function() {
-        // Initialiser le calendrier
-        $('#calendar').fullCalendar({
-            defaultView: 'agendaWeek', // Définir la vue par semaine par défaut
-            slotDuration: '00:30:00', // Durée de chaque intervalle (30 minutes)
-            slotLabelInterval: '01:00:00', // Fréquence d'affichage des étiquettes d'heure (1 heure)
-            contentHeight: 'auto', // Ajuster la hauteur du contenu automatiquement
-            
-            // Augmenter la hauteur des lignes
-            slotLabelFormat: {
-                hour: 'numeric',
-                minute: '2-digit',
-                omitZeroMinute: false,
-                meridiem: 'short'
-            },
-            // Configuration du calendrier
-            // ...
+     document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+    
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'timeGridWeek', // Vue par semaine avec horaires
+            slotDuration: '00:30:00',
+            slotLabelInterval: '01:00:00',
+            height: 'auto',
     
             // Charger des événements depuis la base de données
-            events: [
-                {
-                    title: 'Événement 1',
-                    start: '2023-11-15',
-                    end: '2023-11-16',
-                    description: 'Description de l\'événement 1',
-                },
-                {
-                    title: 'Événement 2',
-                    start: '2023-11-20',
-                    end: '2023-11-22',
-                    description: 'Description de l\'événement 2',
-                },
-                // Ajoutez d'autres événements ici en récupérant les données depuis votre base de données
-            ],
-            
-            eventClick: function(event) {
-                // Action à effectuer lorsque l'utilisateur clique sur un événement
-                alert('Titre : ' + event.title + '\nDescription : ' + event.description);
+            events: ' /PHP/API_Charger_Planning.php', // URL vers le script PHP qui renvoie les données JSON des événements
+    
+            eventClick: function(info) {
+                alert('Titre : ' + info.event.title + '\nDescription : ' + info.event.extendedProps.description);
             }
         });
+    
+        calendar.render();
     });
+    
  });
 
 
