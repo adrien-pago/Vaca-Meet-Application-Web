@@ -12,11 +12,11 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <title>Gestion des structures</title>
     <link rel="stylesheet" href="/CSS/Style_Gestion.css">
      <!-- Planning bibliothèque fullcalendar-->
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
+     <!-- CSS pour FullCalendar -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeng/9.0.6/resources/components/fullcalendar/fullcalendar.css">
+     <!-- Scripts JS pour FullCalendar et ses dépendances -->
+     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+
 </head>
 
 <body>
