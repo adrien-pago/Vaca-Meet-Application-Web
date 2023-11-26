@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 
 include 'config.php';
 
@@ -8,40 +9,27 @@ try {
     if (empty($id_camping)) {
         throw new Exception('ID du camping manquant');
     }
-
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $conn->prepare("
-        SELECT 
-            a.NOM_ACTIVITE AS title, 
-            p.DATE_HEURE_DEBUT AS start, 
-            p.DATE_HEURE_FIN AS end
-        FROM PLANNING p
-        JOIN ACTIVITE_CAMPING ac ON ac.ID_PLANNING = p.ID_PLANNING
-        JOIN CAMPING c ON c.ID_CAMPING = ac.ID_CAMPING
-        JOIN ACTIVITE a on a.ID_ACTVITE = ac.ID_ACTVITE
-        JOIN STRUCTURE s on s.ID_STRUCTURE = a.ID_STRUCTURE
-        WHERE s.ID_CAMPING = :id_camping
-    ");
-    $stmt->bindParam(':id_camping', $id_camping);
-    $stmt->execute();
-
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Convertir les résultats en format attendu par FullCalendar
-    $events = array_map(function ($result) {
-        return [
-            'title' => $result['title'],
-            'start' => $result['start'],
-            'end' => $result['end'] // Assurez-vous que cette colonne existe dans votre base de données
-        ];
-    }, $results);
-
-    echo json_encode($events);
-
 } catch (Exception $e) {
     error_log($e->getMessage());
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
 }
+
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Récupération des paramètres
+    $dateDebut = $_GET['dateDebut'] ?? date('Y-m-d');
+    $dateFin = $_GET['dateFin'] ?? date('Y-m-d', strtotime($dateDebut . ' + 6 days'));
+    
+    // Requête pour récupérer les activités
+    $stmt = $db->prepare("SELECT `DATE_HEURE_DEBUT`, `DATE_HEURE_FIN`, `ID_PLANNING`, `LIB_ACTIVITE` FROM `PLANNING` WHERE `DATE_HEURE_DEBUT` >= :dateDebut AND `DATE_HEURE_FIN` <= :dateFin");
+    $stmt->execute(['dateDebut' => $dateDebut, 'dateFin' => $dateFin]);
+    $activites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    echo json_encode($activites);
+    
+
+
+

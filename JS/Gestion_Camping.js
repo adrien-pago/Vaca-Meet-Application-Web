@@ -226,25 +226,60 @@ document.addEventListener("DOMContentLoaded", function() {
      }
 
      ////////////////////PLanning/////////////////////////
-     document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
+     initPlanning();
+     function initPlanning() {
+        console.log("Initialisation du planning");
     
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek', // Vue par semaine avec horaires
-            slotDuration: '00:30:00',
-            slotLabelInterval: '01:00:00',
-            height: 'auto',
+        const dateDebut = new Date(); 
+        dateDebut.setDate(dateDebut.getDate() - dateDebut.getDay() + 1); 
+        const dateFin = new Date(dateDebut);
+        dateFin.setDate(dateDebut.getDate() + 6); 
     
-            // Charger des événements depuis la base de données
-            events: ' /PHP/API_Charger_Planning.php', // URL vers le script PHP qui renvoie les données JSON des événements
+        document.getElementById('dateDebut').textContent = formatDate(dateDebut);
+        document.getElementById('dateFin').textContent = formatDate(dateFin);
     
-            eventClick: function(info) {
-                alert('Titre : ' + info.event.title + '\nDescription : ' + info.event.extendedProps.description);
+        generatePlanningTable();
+        loadActivities(dateDebut, dateFin);
+    }
+    
+    function formatDate(date) {
+        return date.toLocaleDateString('fr-FR');
+    }
+    
+    function generatePlanningTable() {
+        console.log("Génération du tableau de planning");
+    
+        const planning = document.getElementById('planning-week');
+        const heures = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'];
+        const jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    
+        let thead = planning.createTHead();
+        let row = thead.insertRow();
+        jours.forEach(function(jour) {
+            let th = document.createElement('th');
+            th.innerHTML = jour;
+            row.appendChild(th);
+        });
+    
+        let tbody = planning.createTBody();
+        heures.forEach(function(heure) {
+            let row = tbody.insertRow();
+            for (let i = 0; i < jours.length; i++) {
+                let cell = row.insertCell();
+                cell.dataset.heure = heure;
+                cell.dataset.jour = i;
             }
         });
     
-        calendar.render();
-    });
+        console.log("Tableau de planning généré");
+    }
+    
+    function loadActivities(dateDebut, dateFin) {
+        console.log("Chargement des activités");
+        // Logique AJAX pour charger les activités
+    }
+    
+    
     
  });
 

@@ -82,3 +82,37 @@ button {
 #addRow:hover {
     background-color: #45a049;
 }
+
+/*Style planning*/
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#planningContainer {
+    width: 80%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/*    ---------------------------------------              */
+
+

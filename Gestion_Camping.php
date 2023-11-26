@@ -29,10 +29,13 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
 
     <div class="gestion_tableau">
         <div class="structure" id="gestionStructure">
-            <h1>Gestion Structure</h1>
+            <h1>Gestion structure</h1>
+        </div>
+        <div class="activite" id="gestionActivite">
+            <h1>Gestion activité </h1>
         </div>
         <div class="planning" id="gestionPlanning">
-            <h1>Gestion Planning</h1>
+            <h1>Gestion planning</h1>
         </div>
     </div>
   
@@ -54,11 +57,15 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </table>
     </div>
 
+     <!-- gérer les activité dans un tableau-->
+
     <div id="planning" style="display: none;">
-    <div id="calendar"></div>
-        <!-- Le contenu du planning sera généré ici -->
+        <div id="planningContainer">
+            <h2 id="planningTitle">Semaine du <span id="dateDebut"></span> au <span id="dateFin"></span></h2>
+            <button id="addActivity">Ajouter une activité</button>
+            <table id="planning-week"></table>
+        </div>
     </div>
-</div>
 
     
     <script>
