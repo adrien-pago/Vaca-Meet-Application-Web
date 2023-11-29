@@ -11,7 +11,7 @@ body {
     color: blue; /* couleur pour indiquer l'élément actif */
   }
 
-  #gestionStructure, #gestionPlanning { /* pointeur souri sur l'élément */
+  #gestionStructure, #gestionPlanning, #gestionAnimation { /* pointeur souri sur l'élément */
     cursor: pointer;
 }
 
@@ -70,7 +70,7 @@ button {
     margin-bottom: 0.5%;
 }
 
-#addRow {
+#addRow, #addAnimation {
     padding: 1rem 2rem; /* Utilisation de rem pour le padding du bouton */
     background-color: #4CAF50;
     color: white;
@@ -79,7 +79,7 @@ button {
     border-radius: 0.25rem; /* Utilisation de rem pour les coins arrondis du bouton */
 }
 
-#addRow:hover {
+#addRow:hover, #addAnimation:hover {
     background-color: #45a049;
 }
 

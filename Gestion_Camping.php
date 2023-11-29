@@ -31,7 +31,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         <div class="structure" id="gestionStructure">
             <h1>Gestion structure</h1>
         </div>
-        <div class="activite" id="gestionActivite">
+        <div class="animation" id="gestionAnimation">
             <h1>Gestion activité </h1>
         </div>
         <div class="planning" id="gestionPlanning">
@@ -39,6 +39,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         </div>
     </div>
   
+    <!-- gérer les structures -->
     <div id="tableau" style="display: none;">
     <button id="addRow">Rajouter une structure</button>
     <table>
@@ -57,8 +58,23 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </table>
     </div>
 
-     <!-- gérer les activité dans un tableau-->
+     <!-- gérer les activité -->
+    <div id="tableauAnimation" style="display: none;">
+        <button id="addAnimation">Rajouter une activité </button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Libellé</th>
+                </tr>
+            </thead>
+            <tbody id="tableBodyAnimation">
+                <!-- Les lignes d'animation seront ajoutées dynamiquement ici -->
+            </tbody>
+        </table>
+    </div>
 
+    <!-- gérer le planning -->
     <div id="planning" style="display: none;">
         <div id="planningContainer">
             <h2 id="planningTitle">Semaine du <span id="dateDebut"></span> au <span id="dateFin"></span></h2>
