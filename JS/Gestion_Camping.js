@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ////////////////////////////// Gestion Structure ///////////////////////////////////////////////////
     // Récupère les informations du camping avec le bon ID
     function fetchData() {
-        fetch(`/PHP/API_Fetch.php?id_camping=${id_camping}`)
+        fetch(`/PHP/API_STRUCTURE/API_Fetch.php?id_camping=${id_camping}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erreur réseau ou serveur');
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Envoyez une requête AJAX pour mettre à jour les données
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/PHP/API_Update.php', true);
+        xhr.open('POST', '/PHP/API_STRUCTURE/API_Update.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
             if (xhr.status === 200 && xhr.responseText.trim() === 'Updated successfully') {
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (confirmDelete) {
             // Envoyez une requête AJAX pour supprimer la ligne
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/PHP/API_Delete.php', true);
+            xhr.open('POST', '/PHP/API_STRUCTURE/API_Delete.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200 && xhr.responseText.trim() === 'Deleted successfully') {
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Envoyez une requête AJAX pour insérer les données
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/PHP/API_Insert.php', true);
+        xhr.open('POST', '/PHPAPI_STRUCTURE/API_Insert.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
             if (xhr.status === 200 && xhr.responseText.trim() === 'Inserted successfully') {
