@@ -1,62 +1,140 @@
 # Application_Camping
 
 
+
 Contexte 
-Les campings sont souvent des lieux où les vacanciers cherchent à se détendre et à s'amuser. Cependant, bon nombre d'entre eux se retrouvent souvent isolés et n’osent pas proposer d’activités aux autres vacanciers afin de faire aussi des rencontres. 
-Ou parfois même ils ne connaissent pas les diverses activités proposées au sein du camping. L'objectif de cette application est de dynamiser les activités du camping et de faciliter les rencontres entre vacanciers, 
-en permettant aux vacanciers de proposer eux même des activités et d'inviter d'autres vacanciers à y participer.
+Les campings sont souvent des lieux où les vacanciers cherchent à se détendre et à s'amuser. Cependant, bon nombre d'entre eux se retrouvent souvent isolés et n’osent pas proposer d’activités aux autres vacanciers afin de faire aussi des rencontres.  Ou parfois même ils ne connaissent pas les diverses activités proposées au sein du camping. L'objectif de cette application est de dynamiser les activités du camping et de faciliter les rencontres entre vacanciers, en permettant aux vacanciers de proposer eux même des activités et d'inviter d'autres vacanciers à y participer. En plus des activités déjà mises en place par l’équipe d’animation du camping.
 
 
-Cahier des Charges pour l'Application Camping Dynamique
+Table des matières
+I) Cahier des Charges de l’application client pour les camping	2
+I) 1. Objectifs Principaux	2
+I) 2. Fonctionnalités	2
+I) 2.1 Écran de connexion à l’application client pour les camping	2
+I) 2.2 Écran de paramétrage pour ajouter les activités disponibles dans le camping	2
+I) 3. Interface	2
+I) 4. Sécurité	2
+I) 5. Maintenance et Mises à jour	2
+II ) Cahier des Charges de l’application mobile pour les vacanciers	3
+II) 1. Objectifs Principaux	3
+II) 2. Fonctionnalités	3
+II) 2.1 Inscription / Connexion des vacanciers	3
+II) 2.2 Switch planning animation camping et planning vacancier	3
+II) 2.3 Création de Salons sur le planning vacancier	3
+II) 2.4 Rejoindre un Salon sur le planning vacancier	3
+II) 2.5 Notifications	3
+II) 2.6 Profil Utilisateur	4
+II) 2.6 Système de Feedback	4
+II) 3. Interface	4
+II) 4. Sécurité	4
+II) 5. Maintenance et Mises à jour	4
+Informations supplémentaires nécessaires	4
 
-1. Objectifs Principaux 
-Permettre à un vacancier de proposer une activité
-Permettre aux autres vacanciers de rejoindre une activité proposée
+
+
+
+
+I) Cahier des Charges de l’application client pour les camping
+
+I) 1. Objectifs Principaux 
+Permettre au camping de gérer sa liste d’activité 
+Permettre au camping de gérer sa liste de structure
+Permettre au camping de gérer son planning d’animation pour son équipe d’animation
+Faciliter la gestion des activité proposé par le camping pour les vacancier
+I) 2. Fonctionnalités
+
+I) 2.1 Écran de connexion à l’application client pour les camping
+Une page simple avec pour identification nom de camping et mot de passe.
+Un bouton connexion pour accéder à l’application.
+Un bouton création de compte pour permettre au camping de se créer un compte.
+Popup de création de compte:
+Un formulaire de création avec nom de camping, mot de passe, adresse email, N°  de siret.
+Une vérification avec un jeton token envoyer par email pour confirmer l’inscription.
+Une vérification du N° de siret pour authentifier le camping
+
+I) 2.2 Écran de paramétrage pour ajouter les activités disponibles dans le camping
+Identification admin par camping
+Permettre de gérer la listes des activités avec une table (Ajout / modification / suppression)
+Permettre de gérer la listes des structures avec une table (Ajout / modification / suppression
+Permettre de gérer le planning des animations proposé par le camping
+Renseigner les activités autorisées dans la liste des activités, qui pourront être proposées par les vacanciers.
+
+I) 3. Interface
+Design moderne et responsive adapté aux différents formats d’écran  d’ordinateurs.
+Charte graphique  à respecter
+
+I) 4. Sécurité 
+Stockage sécurisé des données des camping
+Protection contre les failles de sécurité courantes:
+	protection contre les injection SQL
+	protection contre les injection XXS
+	protection contre les attaque CSRF
+
+I) 5. Maintenance et Mises à jour 
+Intégrer les mises à jour directement sur le serveur qui héberge l’application.
+Support pour les campings en cas de problèmes (plateforme de Ticketing pour gérer les incident au cas par cas)
+
+II ) Cahier des Charges de l’application mobile pour les vacanciers
+
+II) 1. Objectifs Principaux 
+Permettre aux vacanciers de consulter le planning d'animation du camping ou bien le planning proposé par les vacanciers.
+Permettre à un vacancier de proposer une activité pour les autres vacanciers sur le planning vacancier
+Permettre aux vacanciers de rejoindre une activité proposée par un vacancier sur le planning vacancier.
 Dynamiser les activités au sein du camping
 Faciliter l’échange et les rencontres entre les vacanciers  
-2. Fonctionnalités
-2.1 Ecran de paramétrage pour ajouter les activités disponibles dans le camping
-Identification admin par camping
-permettre d’ajouter dans la table des activités
-Ajouter le nombre exact d’infrastructure disponible pour chaque activité
-Permettre de modifier leurs informations renseignées en cas d’évolution
-Mettre une carte du camping pour renseigner les différents lieux
-Renseigner les activités autorisées qui seront proposées par les vacanciers.
-2.2 Inscription / Connexion des vacanciers
+II) 2. Fonctionnalités
+
+II) 2.1 Inscription / Connexion des vacanciers
 Inscription des vacanciers avec des informations de base (nom, prénom, email, mot de passe).
 Connexion sécurisée.
-Option de récupération de mot de passe.
-2.3 Création de Salons
-Un vacancier peut créer un salon pour une activité spécifique.
+stocker seulement le hash du mot de passe.
+II) 2.2 Switch planning animation camping et planning vacancier
+Permettre aux vacancier de visualiser le planning animation camping
+Permettre aux vacancier de visualiser le planning vacancier
+
+II) 2.3 Création de Salons sur le planning vacancier
+Un vacancier peut créer un salon pour une activité spécifique sur le planning vacancier.
 Possibilité d'ajouter une description, une date, une heure et un lieu pour l'activité.
 Option d'ajouter une photo ou une image représentative de l'activité.
 Option de limiter le nombre de participants pour l'activité.
-Des créneaux seront réservés au planning d’animation du camping déjà en place
-2.4 Rejoindre un Salon
-Les vacanciers peuvent voir la liste des activités proposées.
+Des créneaux seront réservés sur planning d’animation vacancier.
+II) 2.4 Rejoindre un Salon sur le planning vacancier
+Les vacanciers peuvent voir les activités proposées par les autres vacanciers sur le planning vacancier
 Possibilité de rejoindre une activité (si le nombre maximum de participants n'est pas atteint).
 Possibilité de quitter une activité si le vacancier change d'avis.
-Une fois le saloon complet ils se grise à l’affichage et redevient actif si un vacancier le quitte
-2.5 Notifications
+Une fois le salon complet ils  disparaît à l’affichage et redevient actif si un vacancier le quitte 
+II) 2.5 Notifications
 Notifications en temps réel pour les vacanciers lorsqu'une nouvelle activité est proposée. (En option)
 Notification pour le créateur de l'activité lorsque quelqu'un rejoint ou quitte son salon.
-2.6 Profil Utilisateur
+Notification une fois que le salon de l’activité est complet
+Notification de rappel pour les vacancier inscrit à un salon d’activité  1h avant le début de l’activité
+II) 2.6 Profil Utilisateur
 Les vacanciers peuvent voir et éditer leur profil.
-Affichage des activités auxquelles le vacancier est inscrit.
-2.7 Système de Feedback
+Affichage des activités auxquelles le vacancier est inscrit (+ Historique des activité auxquelles le vacancier a participé)
+II) 2.6 Système de Feedback
 Les vacanciers peuvent laisser des commentaires sur l'activité une fois qu'elle est terminée.
 Possibilité de noter l'activité et le créateur du salon.
+II) 3. Interface
+Design moderne et responsive adapté aux différents formats d’écran de téléphone.
+Charte graphique  à respecter
 
-3. Interface
-Design moderne et responsive adapté aux smartphones, tablettes et ordinateurs.
-Cartographie intégrée pour montrer le lieu exact des activités.
+II) 4. Sécurité 
+Stockage sécurisé des données des vacancier
+Protection contre les failles de sécurité courantes:
+	protection contre les injection SQL
+	protection contre les injection XXS
+	protection contre les attaque CSRF
 
-4. Sécurité 
-Stockage sécurisé des données des utilisateurs.
-Protection contre les failles de sécurité courantes.
+II) 5. Maintenance et Mises à jour 
+Intégrer les mises à jour directement sur le serveur qui héberge l’application.
+Support pour les vacancier en cas de problèmes (plateforme de Ticketing pour gérer les incident au cas par cas)
 
-5. Maintenance et Mises à jour 
-Mise en place d'une infrastructure permettant des mises à jour régulières.
-Support pour les utilisateurs en cas de problèmes.
+
+Informations supplémentaires nécessaires 
+- Un nom pour l'application ?
+- Choisir un modèle de base de données
+- Choisir la techno support pour l’application mobile et la techno pour l’application client camping
+- Intégrer des fonctionnalités premium payantes ?
+- Un budget précis pour le développement de l'application ?
 
 
