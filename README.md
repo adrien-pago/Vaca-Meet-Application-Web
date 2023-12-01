@@ -48,11 +48,14 @@ Support pour les campings en cas de problèmes (plateforme de Ticketing pour gé
 **II) Cahier des Charges de l’application mobile pour les vacanciers**
 
 **II) 1. Objectifs Principaux** 
+
+**II) 1. Objectifs Principaux**
 Permettre aux vacanciers de consulter le planning d'animation du camping ou bien le planning proposé par les vacanciers.
 Permettre à un vacancier de proposer une activité pour les autres vacanciers sur le planning vacancier
 Permettre aux vacanciers de rejoindre une activité proposée par un vacancier sur le planning vacancier.
 Dynamiser les activités au sein du camping
 Faciliter l’échange et les rencontres entre les vacanciers  
+
 **II) 2. Fonctionnalités**
 
 **II) 2.1 Inscription / Connexion des vacanciers**
@@ -65,10 +68,22 @@ Permettre aux vacanciers de visualiser le planning animation camping
 Permettre aux vacanciers de visualiser le planning vacancier
 
 **II) 2.3 Création de Salons sur le planning vacancier**
+II) 2. Fonctionnalités
+
+II) 2.1 Inscription / Connexion des vacanciers
+Inscription des vacanciers avec des informations de base (nom, prénom, email, mot de passe).
+Connexion sécurisée.
+stocker seulement le hash du mot de passe.
+II) 2.2 Switch planning animation camping et planning vacancier
+Permettre aux vacancier de visualiser le planning animation camping
+Permettre aux vacancier de visualiser le planning vacancier
+
+II) 2.3 Création de Salons sur le planning vacancier
 Un vacancier peut créer un salon pour une activité spécifique sur le planning vacancier.
 Possibilité d'ajouter une description, une date, une heure et un lieu pour l'activité.
 Option d'ajouter une photo ou une image représentative de l'activité.
 Option de limiter le nombre de participants pour l'activité.
+<<<<<<< HEAD
 Des créneaux seront réservés sur planning d’animation vacancier.  
 
 **II) 2.4 Rejoindre un Salon sur le planning vacancier**
@@ -106,5 +121,46 @@ Protection contre les failles de sécurité courantes :
 Intégrer les mises à jour directement sur le serveur qui héberge l’application.
 Support pour les vacanciers en cas de problèmes (plateforme de Ticketing pour gérer les incidents au cas par cas)
 
+=======
+Des créneaux seront réservés sur planning d’animation vacancier.
+II) 2.4 Rejoindre un Salon sur le planning vacancier
+Les vacanciers peuvent voir les activités proposées par les autres vacanciers sur le planning vacancier
+Possibilité de rejoindre une activité (si le nombre maximum de participants n'est pas atteint).
+Possibilité de quitter une activité si le vacancier change d'avis.
+Une fois le salon complet ils  disparaît à l’affichage et redevient actif si un vacancier le quitte 
+II) 2.5 Notifications
+Notifications en temps réel pour les vacanciers lorsqu'une nouvelle activité est proposée. (En option)
+Notification pour le créateur de l'activité lorsque quelqu'un rejoint ou quitte son salon.
+Notification une fois que le salon de l’activité est complet
+Notification de rappel pour les vacancier inscrit à un salon d’activité  1h avant le début de l’activité
+II) 2.6 Profil Utilisateur
+Les vacanciers peuvent voir et éditer leur profil.
+Affichage des activités auxquelles le vacancier est inscrit (+ Historique des activité auxquelles le vacancier a participé)
+II) 2.6 Système de Feedback
+Les vacanciers peuvent laisser des commentaires sur l'activité une fois qu'elle est terminée.
+Possibilité de noter l'activité et le créateur du salon.
+II) 3. Interface
+Design moderne et responsive adapté aux différents formats d’écran de téléphone.
+Charte graphique  à respecter
+
+II) 4. Sécurité 
+Stockage sécurisé des données des vacancier
+Protection contre les failles de sécurité courantes:
+	protection contre les injection SQL
+	protection contre les injection XXS
+	protection contre les attaque CSRF
+
+II) 5. Maintenance et Mises à jour 
+Intégrer les mises à jour directement sur le serveur qui héberge l’application.
+Support pour les vacancier en cas de problèmes (plateforme de Ticketing pour gérer les incident au cas par cas)
+
+
+Informations supplémentaires nécessaires 
+- Un nom pour l'application ?
+- Choisir un modèle de base de données
+- Choisir la techno support pour l’application mobile et la techno pour l’application client camping
+- Intégrer des fonctionnalités premium payantes ?
+- Un budget précis pour le développement de l'application ?
+>>>>>>> 023ebc811e37992b0f8b1577bc0105386e696e15
 
 
