@@ -5,35 +5,6 @@
 Contexte 
 Les campings sont souvent des lieux où les vacanciers cherchent à se détendre et à s'amuser. Cependant, bon nombre d'entre eux se retrouvent souvent isolés et n’osent pas proposer d’activités aux autres vacanciers afin de faire aussi des rencontres.  Ou parfois même ils ne connaissent pas les diverses activités proposées au sein du camping. L'objectif de cette application est de dynamiser les activités du camping et de faciliter les rencontres entre vacanciers, en permettant aux vacanciers de proposer eux même des activités et d'inviter d'autres vacanciers à y participer. En plus des activités déjà mises en place par l’équipe d’animation du camping.
 
-
-Table des matières
-I) Cahier des Charges de l’application client pour les camping	2
-I) 1. Objectifs Principaux	2
-I) 2. Fonctionnalités	2
-I) 2.1 Écran de connexion à l’application client pour les camping	2
-I) 2.2 Écran de paramétrage pour ajouter les activités disponibles dans le camping	2
-I) 3. Interface	2
-I) 4. Sécurité	2
-I) 5. Maintenance et Mises à jour	2
-II ) Cahier des Charges de l’application mobile pour les vacanciers	3
-II) 1. Objectifs Principaux	3
-II) 2. Fonctionnalités	3
-II) 2.1 Inscription / Connexion des vacanciers	3
-II) 2.2 Switch planning animation camping et planning vacancier	3
-II) 2.3 Création de Salons sur le planning vacancier	3
-II) 2.4 Rejoindre un Salon sur le planning vacancier	3
-II) 2.5 Notifications	3
-II) 2.6 Profil Utilisateur	4
-II) 2.6 Système de Feedback	4
-II) 3. Interface	4
-II) 4. Sécurité	4
-II) 5. Maintenance et Mises à jour	4
-Informations supplémentaires nécessaires	4
-
-
-
-
-
 I) Cahier des Charges de l’application client pour les camping
 
 I) 1. Objectifs Principaux 
