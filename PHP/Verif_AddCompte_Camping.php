@@ -35,7 +35,7 @@ $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if ($conn->connect_error) {
     die("La connexion à la base de données a échoué : " . $conn->connect_error);
 }
-// Récupérer les données du formulaire
+// Récupérer les données du formulaire + vérifier  champ !!!!!!!! + prévoir htacces !!!!
 $email = $_POST['email'];
 $NomCamping = $_POST['NomCamping'];
 $NumeroSiret = $_POST['NumSiretC'];
