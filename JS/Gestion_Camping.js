@@ -409,7 +409,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
      ///////////////////////////////// Gestion PLanning///////////////////////////////////////
-     
      // Fonction pour obtenir le lundi et le dimanche de la semaine actuelle
     function getWeekStartAndEndDates() {
         let now = new Date();
@@ -439,19 +438,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fonction pour charger et afficher le planning
     function loadAndDisplayPlanning() {
-
-        // Appel AJAX pour récupérer les activités
-        fetch(`/fetchActivities.php?id_camping=${campingId}`)
-            .then(response => response.json())
-            .then(activities => {
-                // Ici, vous pouvez utiliser les activités pour remplir votre planning
-                // ...
+        let planningWeek = document.getElementById("planning-week");
+        planningWeek.innerHTML = "";  // Nettoyer le contenu existant
+    
+        let heures = ["8h", "10h", "12h", "14h", "16h", "18h", "20h", "22h", "24h"];
+        let jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+    
+        // Créer l'en-tête du tableau
+        let thead = planningWeek.createTHead();
+        let headerRow = thead.insertRow();
+        headerRow.insertCell().textContent = "Heure / Jour"; // Cellule vide pour le coin supérieur gauche
+        jours.forEach(jour => {
+            headerRow.insertCell().textContent = jour;
+        });
+    
+        // Créer le corps du tableau
+        let tbody = planningWeek.createTBody();
+        heures.forEach(heure => {
+            let row = tbody.insertRow();
+            row.insertCell().textContent = heure; // Première cellule pour l'heure
+            jours.forEach(() => {
+                row.insertCell().textContent = ""; // Cellules vides pour les activités
             });
+        });
+    
+         // Appel AJAX pour récupérer les activités
+         fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}`)
+         .then(response => response.json())
+         .then(activities => {
+             // Ici, vous pouvez utiliser les activités pour remplir votre planning
+             // ...
+         });
     }
-    loadAndDisplayPlanning()
     
-    
-    
+    loadAndDisplayPlanning();
+
+ 
 });
 
 

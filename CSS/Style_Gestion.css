@@ -102,11 +102,12 @@ table {
 
 table, th, td {
     border: 1px solid black;
+    height: 4vh; 
 }
 
 th, td {
-    padding: 10px;
     text-align: left;
+    font-size: 1vw; /* Augmenter la taille de la police */
 }
 
 th {
