@@ -69,14 +69,16 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         </table>
     </div>
 
-    <!-- gérer le planning -->
-    <div id="planning" style="display: none;">
-        <div id="planningContainer">
-            <h2 id="planningTitle">Semaine du <span id="dateDebut"></span> au <span id="dateFin"></span></h2>
-            <button id="addActivity">Ajouter une activité</button>
-            <table id="planning-week"></table>
-        </div>
+   <!-- gérer le planning -->
+<div id="planning" style="display: none;">
+    <div id="planningContainer">
+        <h2 id="planningTitle">Semaine du <span id="dateDebut"></span> au <span id="dateFin"></span></h2>
+        <button id="addActivity">Ajouter une activité</button>
+        <table id="planning-week">
+            <!-- Les cellules du planning seront ajoutées dynamiquement ici -->
+        </table>
     </div>
+</div>
 
     
     <script>

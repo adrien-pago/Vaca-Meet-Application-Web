@@ -409,62 +409,50 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
      ///////////////////////////////// Gestion PLanning///////////////////////////////////////
-     initPlanning();
-     function initPlanning() {
-        console.log("Initialisation du planning");
-    
-        const dateDebut = new Date(); 
-        dateDebut.setDate(dateDebut.getDate() - dateDebut.getDay() + 1); 
-        const dateFin = new Date(dateDebut);
-        dateFin.setDate(dateDebut.getDate() + 6); 
-    
-        document.getElementById('dateDebut').textContent = formatDate(dateDebut);
-        document.getElementById('dateFin').textContent = formatDate(dateFin);
-    
-        generatePlanningTable();
-        loadActivities(dateDebut, dateFin);
+     
+     // Fonction pour obtenir le lundi et le dimanche de la semaine actuelle
+    function getWeekStartAndEndDates() {
+        let now = new Date();
+        let dayOfWeek = now.getDay(); // Jour de la semaine avec Dimanche = 0, Lundi = 1, etc.
+        let diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Calculer le décalage par rapport à Lundi
+
+        let startOfWeek = new Date(now);
+        startOfWeek.setDate(now.getDate() + diffToMonday);
+
+        let endOfWeek = new Date(startOfWeek);
+        endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+        // Formatage des dates au format YYYY-MM-DD
+        let formatDate = (date) => date.toISOString().split('T')[0];
+
+        return {
+            dateDebut: formatDate(startOfWeek),
+            dateFin: formatDate(endOfWeek)
+        };
     }
-    
-    function formatDate(date) {
-        return date.toLocaleDateString('fr-FR');
+    // Utiliser la fonction pour obtenir les dates de début et de fin
+    let { dateDebut, dateFin } = getWeekStartAndEndDates();
+
+    // Mettre à jour le texte des éléments HTML
+    document.getElementById('dateDebut').innerText = dateDebut;
+    document.getElementById('dateFin').innerText = dateFin;
+
+    // Fonction pour charger et afficher le planning
+    function loadAndDisplayPlanning() {
+
+        // Appel AJAX pour récupérer les activités
+        fetch(`/fetchActivities.php?id_camping=${campingId}`)
+            .then(response => response.json())
+            .then(activities => {
+                // Ici, vous pouvez utiliser les activités pour remplir votre planning
+                // ...
+            });
     }
-    
-    function generatePlanningTable() {
-        console.log("Génération du tableau de planning");
-    
-        const planning = document.getElementById('planning-week');
-        const heures = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'];
-        const jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-    
-        let thead = planning.createTHead();
-        let row = thead.insertRow();
-        jours.forEach(function(jour) {
-            let th = document.createElement('th');
-            th.innerHTML = jour;
-            row.appendChild(th);
-        });
-    
-        let tbody = planning.createTBody();
-        heures.forEach(function(heure) {
-            let row = tbody.insertRow();
-            for (let i = 0; i < jours.length; i++) {
-                let cell = row.insertCell();
-                cell.dataset.heure = heure;
-                cell.dataset.jour = i;
-            }
-        });
-    
-        console.log("Tableau de planning généré");
-    }
-    
-    function loadActivities(dateDebut, dateFin) {
-        console.log("Chargement des activités");
-        // Logique AJAX pour charger les activités
-    }
+    loadAndDisplayPlanning()
     
     
     
- });
+});
 
 
 
