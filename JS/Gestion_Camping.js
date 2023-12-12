@@ -408,9 +408,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-     ///////////////////////////////// Gestion PLanning///////////////////////////////////////
+    ///////////////////////////////// Gestion Planning ///////////////////////////////////////
      // Fonction pour obtenir le lundi et le dimanche de la semaine actuelle
-    function getWeekStartAndEndDates() {
+     function getWeekStartAndEndDates() {
         let now = new Date();
         let dayOfWeek = now.getDay(); // Jour de la semaine avec Dimanche = 0, Lundi = 1, etc.
         let diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Calculer le décalage par rapport à Lundi
@@ -429,52 +429,154 @@ document.addEventListener("DOMContentLoaded", function() {
             dateFin: formatDate(endOfWeek)
         };
     }
-    // Utiliser la fonction pour obtenir les dates de début et de fin
-    let { dateDebut, dateFin } = getWeekStartAndEndDates();
 
-    // Mettre à jour le texte des éléments HTML
-    document.getElementById('dateDebut').innerText = dateDebut;
-    document.getElementById('dateFin').innerText = dateFin;
-
-    // Fonction pour charger et afficher le planning
-    function loadAndDisplayPlanning() {
-        let planningWeek = document.getElementById("planning-week");
-        planningWeek.innerHTML = "";  // Nettoyer le contenu existant
-    
-        let heures = ["8h", "10h", "12h", "14h", "16h", "18h", "20h", "22h", "24h"];
+    // Fonction pour créer l'en-tête et le corps du tableau de planning
+    function createTableStructure(planningWeek) {
+        let plagesHoraires = ["8h-10h", "10h-12h", "12h-14h", "14h-16h", "16h-18h", "18h-20h", "20h-22h", "22h-24h"];
         let jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-    
+        
         // Créer l'en-tête du tableau
         let thead = planningWeek.createTHead();
         let headerRow = thead.insertRow();
-        headerRow.insertCell().textContent = "Heure / Jour"; // Cellule vide pour le coin supérieur gauche
+        headerRow.insertCell().textContent = "Plage horaire / Jour";
         jours.forEach(jour => {
             headerRow.insertCell().textContent = jour;
         });
-    
+        
         // Créer le corps du tableau
         let tbody = planningWeek.createTBody();
-        heures.forEach(heure => {
+        plagesHoraires.forEach(plageHoraire => {
             let row = tbody.insertRow();
-            row.insertCell().textContent = heure; // Première cellule pour l'heure
+            row.insertCell().textContent = plageHoraire;
             jours.forEach(() => {
-                row.insertCell().textContent = ""; // Cellules vides pour les activités
+                row.insertCell().textContent = "";
             });
         });
-    
-         // Appel AJAX pour récupérer les activités
-         fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}&dateDebut=${dateDebut}&dateFin=${dateFin}`)
-         .then(response => response.json())
-         .then(activities => {
-             // Ici, vous pouvez utiliser les activités pour remplir votre planning
-             // ...
-         });
     }
-    
+
+    // Fonction pour charger et afficher le planning
+    function loadAndDisplayPlanning() {
+        let { dateDebut, dateFin } = getWeekStartAndEndDates();
+        // Mettre à jour les éléments HTML pour les dates de début et de fin
+        document.getElementById('dateDebut').textContent = dateDebut;
+        document.getElementById('dateFin').textContent = dateFin;
+        let planningWeek = document.getElementById("planning-week");
+        planningWeek.innerHTML = "";  // Nettoyer le contenu existant
+
+        createTableStructure(planningWeek);
+
+        // Appel AJAX pour récupérer les activités
+        fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}&dateDebut=${dateDebut}&dateFin=${dateFin}`)
+            .then(response => response.json())
+            .then(events => {
+                events.forEach(event => {
+                    insertEventInPlanning(event);
+                });
+            });
+    }
+
+    // Fonction pour insérer un événement dans le planning
+    function insertEventInPlanning(event) {
+        let debut = new Date(event.DATE_HEURE_DEBUT);
+        let heureDebut = debut.getHours();
+        let jour = debut.getDay();
+
+        // Convertir le jour (0-6) en index de colonne (1-7)
+        let jourIndex = jour === 0 ? 7 : jour;
+
+        // Ajustement des indices pour le sélecteur nth-child
+        let rowIndex = Math.floor((heureDebut - 8) / 2) + 1; // +2 car nth-child commence à 1 et la première ligne est l'en-tête ??? +1 fonctionne mais pas +2
+        let colIndex = jourIndex + 1;
+
+        if (!isNaN(rowIndex) && !isNaN(colIndex)) {
+            let cellSelector = `#planning-week tr:nth-child(${rowIndex}) td:nth-child(${colIndex})`;
+            let cell = document.querySelector(cellSelector);
+            if (cell) {
+                cell.textContent = event.LIB_ACTIVITE; // Ajouter le nom de l'activité dans la cellule
+            } else {
+                console.error("Cellule introuvable avec le sélecteur:", cellSelector);
+            }
+        } else {
+            console.error("Indices invalides pour rowIndex ou colIndex");
+        }
+    }
+
+    // Initialiser le planning
     loadAndDisplayPlanning();
 
- 
+    ///////////////////////////////// Fenetre Modal pour ajout d'évènement dans le planning /////////////////////////////////////////
+    //récupérer la liste des activité dans une combo
+    function fetchActivitiesForSelect() {
+        fetch(`/PHP/API_PLANNING/API_Libelle_Activite.php?id_camping=${campingId}`)
+            .then(response => response.json())
+            .then(activities => {
+                let activitySelect = document.getElementById("activitySelect");
+                activitySelect.innerHTML = ""; // Nettoyer la liste déroulante avant de la remplir
+    
+                activities.forEach(activity => {
+                    let option = document.createElement("option");
+                    option.value = activity.LIBELLE_ACT;
+                    option.textContent = activity.LIBELLE_ACT;
+                    activitySelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des activités :', error);
+            });
+    }
+    //récupérer la liste des structure dans une combo
+    function fetchStructuresForSelect() {
+        fetch(`/PHP/API_PLANNING/API_Libelle_Structure.php?id_camping=${campingId}`)
+            .then(response => response.json())
+            .then(structures => {
+                let structureSelect = document.getElementById("structureSelect");
+                structureSelect.innerHTML = ""; 
+                structures.forEach(structure => {
+                    let option = document.createElement("option");
+                    option.value = structure.ID_STRUCTURE; // Utilisez l'ID pour l'insertion
+                    option.textContent = structure.LIBELLE_STRUCTURE;
+                    structureSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des structures :', error);
+            });
+    }
+    // Ouverture de la fenêtre modale
+    document.getElementById("addActivity").addEventListener("click", function() {
+    fetchActivitiesForSelect();
+    fetchStructuresForSelect();
+    document.getElementById("modalAddActivity").style.display = "block";
+    });
+
+    // Fermeture de la fenêtre modale
+    document.getElementById("cancelActivity").addEventListener("click", function() {
+        document.getElementById("modalAddActivity").style.display = "none";
+    });
+
+    // Gestion du bouton Valider
+    document.getElementById("validateActivity").addEventListener("click", function() {
+        let selectedActivity = document.getElementById("activitySelect").value;
+        let selectedStructureId = document.getElementById("structureSelect").value;
+        let startTime = document.getElementById("startTime").value;
+        let endTime = document.getElementById("endTime").value;
+        fetch('/PHP/API_PLANNING/API_Insert.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `lib_activite=${encodeURIComponent(selectedActivity)}&id_structure=${encodeURIComponent(selectedStructureId)}&dateHeureDebut=${encodeURIComponent(startTime)}&dateHeureFin=${encodeURIComponent(endTime)}&id_camping=${encodeURIComponent(campingId)}`
+        })
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            document.getElementById("modalAddActivity").style.display = "none";
+            loadAndDisplayPlanning(); // Recharger le planning pour afficher le nouvel événement
+        })
+        .catch(error => {
+            console.error('Erreur lors de linsertion :', error);
+        });
+    });
 });
+
 
 
 

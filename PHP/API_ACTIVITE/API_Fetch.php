@@ -15,9 +15,11 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("
-    SELECT LIB_ACTIVITE FROM EVENEMENT WHERE ID_CAMPING = :id_camping AND DATE_HEURE_DEBUT >= :dateDebut AND DATE_HEURE_FIN <= :dateFin
+    SELECT LIB_ACTIVITE, DATE_HEURE_DEBUT, DATE_HEURE_FIN FROM EVENEMENT WHERE ID_CAMPING = :id_camping AND DATE_HEURE_DEBUT >= :dateDebut AND DATE_HEURE_FIN <= :dateFin
     ");
     $stmt->bindParam(':id_camping', $id_camping);
+    $stmt->bindParam(':dateDebut', $dateDebut);
+    $stmt->bindParam(':dateFin', $dateFin);
     $stmt->execute();
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

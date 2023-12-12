@@ -115,5 +115,26 @@ th {
 }
 
 /*    ---------------------------------------              */
+/*    fenetre modal pour ajout Evenement dans le planning           */
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed; /* Rester en place */
+    z-index: 1; /* Se situer au-dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%; /* Pleine largeur */
+    height: 100%; /* Pleine hauteur */
+    overflow: auto; /* Activer le défilement si nécessaire */
+    background-color: rgb(0,0,0); /* Couleur de fond */
+    background-color: rgba(0,0,0,0.4); /* Noir avec opacité */
+}
 
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% du haut et centré horizontalement */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largeur du contenu */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* Ombre */
+}
 

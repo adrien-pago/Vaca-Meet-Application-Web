@@ -80,6 +80,24 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </div>
 </div>
 
+<!-- Fenêtre modale pour ajouter un événement dans le planning -->
+<div id="modalAddActivity" class="modal">
+    <div class="modal-content">
+        <h2>Ajout d'une activité</h2>
+        <select id="activitySelect"></select>
+        <select id="structureSelect"></select>
+        <input type="datetime-local" id="startTime">
+        <input type="datetime-local" id="endTime">
+        <button id="validateActivity">Valider</button>
+        <button id="cancelActivity">Annuler</button>
+    </div>
+</div>
+
+<style>
+    .modal { display: none; /* Caché par défaut */ }
+    /* Autres styles pour la modale */
+</style>
+
     
     <script>
         var campingId = "<?php echo $campingId; ?>";  // Variable JavaScript pour l'ID du camping
