@@ -11,12 +11,6 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des structures</title>
     <link rel="stylesheet" href="/CSS/Style_Gestion.css">
-     <!-- Planning bibliothèque fullcalendar-->
-     <!-- CSS pour FullCalendar -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeng/9.0.6/resources/components/fullcalendar/fullcalendar.css">
-     <!-- Scripts JS pour FullCalendar et ses dépendances -->
-     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
-
 </head>
 
 <body>

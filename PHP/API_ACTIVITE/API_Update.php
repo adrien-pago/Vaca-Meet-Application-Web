@@ -4,6 +4,9 @@ include 'config.php';
 // Vérification des données POST
 if (!isset($_POST['id_camping']) || !isset($_POST['id_activite']) || !isset($_POST['libelle_act'])) {
     echo "Données POST manquantes";
+    echo($_POST['id_camping']) ;
+    echo($_POST['id_activite']) ;
+    echo($_POST['libelle_act']) ;
     exit;
 }
 

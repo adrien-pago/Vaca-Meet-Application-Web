@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            let tableBody = document.getElementById("tableBodyActivity");
+            let tableBody = document.getElementById("tableBodyAnimation");
             tableBody.innerHTML = "";
             data.forEach(row => {
                 let tr = document.createElement("tr");
@@ -344,7 +344,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.error('Erreur lors de la mise à jour :', xhr.responseText);
                 }
             };
-            xhr.send(`id_activite=${id_activite}&libelle_act=${new_libelle_act}`);
+            xhr.send(`id_activite=${encodeURIComponent(id_activite)}&libelle_act=${encodeURIComponent(new_libelle_act)}&id_camping=${encodeURIComponent(id_camping)}`);
+
 
         } else if (e.target.classList.contains("cancel-edit")) {
             // Restaurez le contenu textuel original des cellules depuis les attributs de données

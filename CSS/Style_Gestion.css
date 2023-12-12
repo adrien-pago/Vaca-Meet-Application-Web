@@ -70,7 +70,7 @@ button {
     margin-bottom: 0.5%;
 }
 
-#addRow, #addAnimation {
+#addRow, #addAnimation, #addActivity{
     padding: 1rem 2rem; /* Utilisation de rem pour le padding du bouton */
     background-color: #4CAF50;
     color: white;
@@ -79,7 +79,7 @@ button {
     border-radius: 0.25rem; /* Utilisation de rem pour les coins arrondis du bouton */
 }
 
-#addRow:hover, #addAnimation:hover {
+#addRow:hover, #addAnimation:hover, #addActivity:hover {
     background-color: #45a049;
 }
 
