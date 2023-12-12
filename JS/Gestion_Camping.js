@@ -447,6 +447,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let tbody = planningWeek.createTBody();
         plagesHoraires.forEach(plageHoraire => {
             let row = tbody.insertRow();
+            row.classList.add("data-row"); // Ajoutez cette ligne pour séparer en tete et corps tableau
             row.insertCell().textContent = plageHoraire;
             jours.forEach(() => {
                 row.insertCell().textContent = "";
@@ -475,31 +476,37 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    // Fonction pour insérer un événement dans le planning
     function insertEventInPlanning(event) {
         let debut = new Date(event.DATE_HEURE_DEBUT);
+        let fin = new Date(event.DATE_HEURE_FIN);
         let heureDebut = debut.getHours();
+        let heureFin = fin.getHours();
         let jour = debut.getDay();
-
+    
         // Convertir le jour (0-6) en index de colonne (1-7)
         let jourIndex = jour === 0 ? 7 : jour;
-
+    
         // Ajustement des indices pour le sélecteur nth-child
-        let rowIndex = Math.floor((heureDebut - 8) / 2) + 1; // +2 car nth-child commence à 1 et la première ligne est l'en-tête ??? +1 fonctionne mais pas +2
+        let rowIndexDebut = Math.floor((heureDebut - 8) / 2) + 1;
+        let rowIndexFin = Math.floor((heureFin - 8) / 2) + 1;
+
         let colIndex = jourIndex + 1;
 
-        if (!isNaN(rowIndex) && !isNaN(colIndex)) {
-            let cellSelector = `#planning-week tr:nth-child(${rowIndex}) td:nth-child(${colIndex})`;
-            let cell = document.querySelector(cellSelector);
-            if (cell) {
-                cell.textContent = event.LIB_ACTIVITE; // Ajouter le nom de l'activité dans la cellule
-            } else {
-                console.error("Cellule introuvable avec le sélecteur:", cellSelector);
+        if (!isNaN(rowIndexDebut) && !isNaN(colIndex)) {
+            for (let rowIndex = rowIndexDebut; rowIndex <= rowIndexFin; rowIndex++) {
+                let cellSelector = `#planning-week tbody .data-row:nth-child(${rowIndex}) td:nth-child(${colIndex})`;
+                let cell = document.querySelector(cellSelector);
+                if (cell) {
+                    cell.textContent += event.LIB_ACTIVITE + ' ';
+                } else {
+                    console.error("Cellule introuvable avec le sélecteur:", cellSelector);
+                }
             }
         } else {
             console.error("Indices invalides pour rowIndex ou colIndex");
         }
     }
+    
 
     // Initialiser le planning
     loadAndDisplayPlanning();

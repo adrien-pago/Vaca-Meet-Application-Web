@@ -131,10 +131,52 @@ th {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% du haut et centré horizontalement */
+    margin: 15% auto; /* Centré horizontalement */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Largeur du contenu */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* Ombre */
+    width: fit-content; /* S'ajuste au contenu */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+.select-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+
+.select-group select, .datetime-group input {
+    flex: 1; /* Égalise la largeur des éléments */
+    margin-right: 2%;
+}
+
+.button-group button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+#validateActivity {
+    background-color: #28a745; /* Vert */
+    color: white;
+}
+
+#validateActivity:hover {
+    background-color: #218838; /* Vert plus clair */
+    box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
+    transform: scale(1.05);
+}
+
+#cancelActivity {
+    background-color: #dc3545; /* Rouge */
+    color: white;
+}
+
+#cancelActivity:hover {
+    background-color: #c82333; /* Rouge plus clair */
+    box-shadow: 0px 0px 10px 0px rgba(220,53,69,0.75);
+    transform: scale(1.05);
+}
