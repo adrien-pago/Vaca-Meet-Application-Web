@@ -91,6 +91,5 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </script>
 
     <script src="/JS/Gestion_Camping.js"></script>
-    <script src="/JS/Gestion_Activite.js"></script>
 </body>
 </html>

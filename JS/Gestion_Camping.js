@@ -273,22 +273,28 @@ document.addEventListener("DOMContentLoaded", function() {
     fetchActivities();
 
     // Ajout d'une nouvelle activité au tableau
-    document.getElementById("addActivity").addEventListener("click", function() {
-        let tableBody = document.getElementById("tableBodyActivity");
-        let tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td><input type="number" placeholder="ID" disabled></td>
-            <td><input type="text" placeholder="Libellé de l'activité"></td>
-            <td>
-                <button class="save-new">✔️</button>
-                <button class="cancel">❌</button>
-            </td>
-        `;
-        tableBody.insertBefore(tr, tableBody.firstChild);
-    });
+    var addButton = document.getElementById("addAnimation");
+    if (addButton) {
+        addButton.addEventListener("click", function() {
+            console.log("Bouton 'Ajouter une activité' cliqué");
+            let tableBody = document.getElementById("tableBodyAnimation");
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><input type="number" placeholder="ID" disabled></td>
+                <td><input type="text" placeholder="Libellé de l'activité"></td>
+                <td>
+                    <button class="save-new">✔️</button>
+                    <button class="cancel">❌</button>
+                </td>
+            `;
+            tableBody.insertBefore(tr, tableBody.firstChild);
+        });
+    } else {
+        console.log("Le bouton 'Ajouter une activité' n'a pas été trouvé");
+    }
 
     // Gestion des événements sur les boutons de chaque ligne du tableau des activités
-    document.getElementById("tableBodyActivity").addEventListener("click", function(e) {
+    document.getElementById("tableBodyAnimation").addEventListener("click", function(e) {
         var row = e.target.closest("tr");
 
         if (e.target.classList.contains("edit")) {
@@ -400,7 +406,7 @@ document.addEventListener("DOMContentLoaded", function() {
             rowToRemove.remove();
         }
     });
-    
+
      ///////////////////////////////// Gestion PLanning///////////////////////////////////////
      initPlanning();
      function initPlanning() {
