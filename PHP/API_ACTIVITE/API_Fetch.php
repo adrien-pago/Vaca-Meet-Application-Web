@@ -3,18 +3,19 @@ include 'config.php';
 
 try {
     $id_camping = $_GET['id_camping'];
-
-    if (empty($id_camping)) {
-        throw new Exception('ID du camping manquant');
+    $dateDebut = $_GET['dateDebut'];
+    $dateFin = $_GET['dateFin'];
+    
+    // Assurez-vous que les variables ne sont pas vides et sont des dates valides
+    if (empty($id_camping) || empty($dateDebut) || empty($dateFin) || !strtotime($dateDebut) || !strtotime($dateFin)) {
+        exit('Paramètres invalides');
     }
-
+    
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("
-        SELECT ID_ACTIVITE, LIBELLE_ACT
-        FROM ACTIVITE
-        WHERE ID_CAMPING = :id_camping
+    SELECT LIB_ACTIVITE FROM EVENEMENT WHERE ID_CAMPING = :id_camping AND DATE_HEURE_DEBUT >= :dateDebut AND DATE_HEURE_FIN <= :dateFin
     ");
     $stmt->bindParam(':id_camping', $id_camping);
     $stmt->execute();

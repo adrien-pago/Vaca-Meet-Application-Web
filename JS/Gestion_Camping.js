@@ -463,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     
          // Appel AJAX pour récupérer les activités
-         fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}`)
+         fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}&dateDebut=${dateDebut}&dateFin=${dateFin}`)
          .then(response => response.json())
          .then(activities => {
              // Ici, vous pouvez utiliser les activités pour remplir votre planning
