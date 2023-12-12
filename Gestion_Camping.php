@@ -66,6 +66,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
                 <tr>
                     <th>ID</th>
                     <th>Libellé</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="tableBodyAnimation">
@@ -90,5 +91,6 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </script>
 
     <script src="/JS/Gestion_Camping.js"></script>
+    <script src="/JS/Gestion_Activite.js"></script>
 </body>
 </html>
