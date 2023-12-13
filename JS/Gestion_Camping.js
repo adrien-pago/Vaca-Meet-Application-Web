@@ -408,33 +408,76 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    ///////////////////////////////// Gestion Planning ///////////////////////////////////////
-     // Fonction pour obtenir le lundi et le dimanche de la semaine actuelle
-     function getWeekStartAndEndDates() {
-        let now = new Date();
-        let dayOfWeek = now.getDay(); // Jour de la semaine avec Dimanche = 0, Lundi = 1, etc.
-        let diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Calculer le décalage par rapport à Lundi
 
-        let startOfWeek = new Date(now);
-        startOfWeek.setDate(now.getDate() + diffToMonday);
 
-        let endOfWeek = new Date(startOfWeek);
-        endOfWeek.setDate(startOfWeek.getDate() + 6);
+   ///////////////////////////////////// Gestion Planning /////////////////////////////////////////////////
+    // Fonction pour obtenir le lundi et le dimanche de la semaine actuelle
+function getWeekStartAndEndDates() {
+    let startDate = document.getElementById('startDate').value;
+    let endDate = document.getElementById('endDate').value;
 
-        // Formatage des dates au format YYYY-MM-DD
-        let formatDate = (date) => date.toISOString().split('T')[0];
+    if (!startDate || !endDate) {
+        // Si aucune date n'est sélectionnée, définissez les dates par défaut pour la semaine en cours
+        let currentDate = new Date();
+        let currentDay = currentDate.getDay();
+        let dayOffset = currentDay === 0 ? -6 : 1 - currentDay; // Ajuster au lundi précédent
+        let monday = new Date(currentDate);
+        monday.setDate(monday.getDate() + dayOffset);
+        let sunday = new Date(monday);
+        sunday.setDate(sunday.getDate() + 6);
 
-        return {
-            dateDebut: formatDate(startOfWeek),
-            dateFin: formatDate(endOfWeek)
-        };
+        startDate = monday.toISOString().split('T')[0];
+        endDate = sunday.toISOString().split('T')[0];
+
+        // Mettre à jour les champs de date
+        document.getElementById('startDate').value = startDate;
+        document.getElementById('endDate').value = endDate;
     }
+
+    return {
+        dateDebut: startDate,
+        dateFin: endDate
+    };
+}
+
+    // Événement pour rafraîchir le planning avec les nouvelles dates
+    document.getElementById('refreshPlanning').addEventListener('click', function() {
+        let startDate = document.getElementById('startDate').value;
+        let endDate = document.getElementById('endDate').value;
+
+        if (!startDate || !endDate) {
+            alert("Veuillez sélectionner les dates de début et de fin.");
+            return;
+        }
+
+        let startDay = new Date(startDate).getDay();
+        let endDay = new Date(endDate).getDay();
+
+        // Vérifier que la date de début est un lundi
+        if (startDay !== 1) {
+            alert("La date de début doit être un lundi.");
+            return;
+        }
+
+        // Calculer le dimanche de la même semaine que la date de début
+        let expectedSunday = new Date(startDate);
+        expectedSunday.setDate(expectedSunday.getDate() + 6);
+        let expectedSundayString = expectedSunday.toISOString().split('T')[0];
+
+        // Vérifier que la date de fin est le dimanche de la même semaine que la date de début
+        if (endDate !== expectedSundayString) {
+            alert("La date de fin doit être le dimanche de la même semaine que la date de début.");
+            return;
+        }
+
+        loadAndDisplayPlanning();
+        });
 
     // Fonction pour créer l'en-tête et le corps du tableau de planning
     function createTableStructure(planningWeek) {
         let plagesHoraires = ["8h-10h", "10h-12h", "12h-14h", "14h-16h", "16h-18h", "18h-20h", "20h-22h", "22h-24h"];
         let jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-        
+
         // Créer l'en-tête du tableau
         let thead = planningWeek.createTHead();
         let headerRow = thead.insertRow();
@@ -442,12 +485,12 @@ document.addEventListener("DOMContentLoaded", function() {
         jours.forEach(jour => {
             headerRow.insertCell().textContent = jour;
         });
-        
+
         // Créer le corps du tableau
         let tbody = planningWeek.createTBody();
         plagesHoraires.forEach(plageHoraire => {
             let row = tbody.insertRow();
-            row.classList.add("data-row"); // Ajoutez cette ligne pour séparer en tete et corps tableau
+            row.classList.add("data-row");
             row.insertCell().textContent = plageHoraire;
             jours.forEach(() => {
                 row.insertCell().textContent = "";
@@ -458,11 +501,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fonction pour charger et afficher le planning
     function loadAndDisplayPlanning() {
         let { dateDebut, dateFin } = getWeekStartAndEndDates();
-        // Mettre à jour les éléments HTML pour les dates de début et de fin
         document.getElementById('dateDebut').textContent = dateDebut;
         document.getElementById('dateFin').textContent = dateFin;
         let planningWeek = document.getElementById("planning-week");
-        planningWeek.innerHTML = "";  // Nettoyer le contenu existant
+        planningWeek.innerHTML = "";
 
         createTableStructure(planningWeek);
 
@@ -476,20 +518,17 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
+    // Fonction pour insérer un événement dans le planning
     function insertEventInPlanning(event) {
         let debut = new Date(event.DATE_HEURE_DEBUT);
         let fin = new Date(event.DATE_HEURE_FIN);
         let heureDebut = debut.getHours();
         let heureFin = fin.getHours();
         let jour = debut.getDay();
-    
-        // Convertir le jour (0-6) en index de colonne (1-7)
+
         let jourIndex = jour === 0 ? 7 : jour;
-    
-        // Ajustement des indices pour le sélecteur nth-child
         let rowIndexDebut = Math.floor((heureDebut - 8) / 2) + 1;
         let rowIndexFin = Math.floor((heureFin - 8) / 2) + 1;
-
         let colIndex = jourIndex + 1;
 
         if (!isNaN(rowIndexDebut) && !isNaN(colIndex)) {
@@ -506,11 +545,9 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Indices invalides pour rowIndex ou colIndex");
         }
     }
-    
 
-    // Initialiser le planning
-    loadAndDisplayPlanning();
-
+     
+   
     ///////////////////////////////// Fenetre Modal pour ajout d'évènement dans le planning /////////////////////////////////////////
     //récupérer la liste des activité dans une combo
     function fetchActivitiesForSelect() {
@@ -549,24 +586,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error('Erreur lors de la récupération des structures :', error);
             });
     }
+
     // Ouverture de la fenêtre modale
     document.getElementById("addActivity").addEventListener("click", function() {
-    fetchActivitiesForSelect();
-    fetchStructuresForSelect();
-    document.getElementById("modalAddActivity").style.display = "block";
+        fetchActivitiesForSelect();
+        fetchStructuresForSelect();
+        document.getElementById("modalAddActivity").style.display = "block";
     });
 
-    // Fermeture de la fenêtre modale
-    document.getElementById("cancelActivity").addEventListener("click", function() {
-        document.getElementById("modalAddActivity").style.display = "none";
-    });
-
-    // Gestion du bouton Valider
+    // Écouteur pour le bouton de validation dans la fenêtre modale
     document.getElementById("validateActivity").addEventListener("click", function() {
         let selectedActivity = document.getElementById("activitySelect").value;
         let selectedStructureId = document.getElementById("structureSelect").value;
         let startTime = document.getElementById("startTime").value;
         let endTime = document.getElementById("endTime").value;
+
         fetch('/PHP/API_PLANNING/API_Insert.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -581,6 +615,11 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Erreur lors de linsertion :', error);
         });
+    });
+
+    // Fermeture de la fenêtre modale
+    document.getElementById("cancelActivity").addEventListener("click", function() {
+        document.getElementById("modalAddActivity").style.display = "none";
     });
 });
 
