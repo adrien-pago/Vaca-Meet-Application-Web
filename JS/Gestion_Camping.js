@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
+    var mdpVacancierButton = document.getElementById('MDP_Vacancier');
+    if (mdpVacancierButton) {
+        mdpVacancierButton.addEventListener('click', function() {
+            document.getElementById('modal_md_vacancier').style.display = 'block';
+        });
+    } else {
+        console.error("L'élément 'MDP_Vacancier' est introuvable dans le DOM.");
+    }
 
     //////////////////// gestion Modification mdp vacancier /////////////////////////////
     document.getElementById('MDP_Vacancier').addEventListener('click', function() {
