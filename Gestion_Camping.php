@@ -21,6 +21,28 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </form>
     <!-- ------------------------------------->
 
+    <!-- gérer le titre et la modification mdp vacancier -->
+    <div class="Titre_Camping">
+        <h1 id="Compte_Camping">Bienvenue au <span id="Nom_Camping"><?php echo htmlspecialchars($campingName); ?></span></h1>
+        <button id="ComeBack" onclick="window.location.href='/index.php'">Déconnexion</button>
+    </div>
+    <div class="gestion_mdp_vacancier">
+        <h1>Modifier le mot de passe de l'application mobil pour les vacanciers</h1>
+        <button id="MDP_Vacancier">Modifier le mot de passe</button>
+    </div>
+    
+    <!-- Fenêtre modale pour modifier le mot de passe des vacanciers -->
+    <div id="modal_md_vacancier" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Modifier le mot de passe pour les vacanciers</h2>
+            <input type="password" id="newPassword" placeholder="Nouveau mot de passe">
+            <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe">
+            <button onclick="updatePassword()">Valider</button>
+            <button onclick="closeModal()">Annuler</button>
+        </div>
+    </div>
+
+    <!-- gérer les actifs -->
     <div class="gestion_tableau">
         <div class="structure" id="gestionStructure">
             <h1>Gestion structure</h1>

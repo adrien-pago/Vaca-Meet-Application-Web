@@ -1,5 +1,38 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    //////////////////// gestion Modification mdp vacancier /////////////////////////////
+    document.getElementById('MDP_Vacancier').addEventListener('click', function() {
+        document.getElementById('modal_md_vacancier').style.display = 'block';
+    });
+    
+    document.getElementById('validatePasswordButton').addEventListener('click', updatePassword);
+    
+    function closeModal() {
+        document.getElementById('modal_md_vacancier').style.display = 'none';
+    }
+    
+    function updatePassword() {
+        var newPassword = document.getElementById('newPassword').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+    
+        if (newPassword === confirmPassword) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/PHP/API_Update_MDP_Vacancier.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Mot de passe mis à jour avec succès.");
+                }
+            };
+            xhr.send("campingId=" + encodeURIComponent(campingId) + "&newPassword=" + encodeURIComponent(newPassword));
+            closeModal();
+        } else {
+            alert("Les mots de passe ne correspondent pas.");
+        }
+    }
+    
+    
+    ///////////////////////// Gestion de l'élément Actif //////////////////////////////////
     // Récupération de l'ID du camping depuis le formulaire
     var id_camping = document.getElementById('campingForm').elements['id'].value; 
     console.log(id_camping); // Affiche l'ID_CAMPING dans la console pour debug
