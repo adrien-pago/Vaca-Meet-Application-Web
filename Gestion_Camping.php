@@ -37,8 +37,8 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
             <h2>Modifier le mot de passe pour les vacanciers</h2>
             <input type="password" id="newPassword" placeholder="Nouveau mot de passe">
             <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe">
-            <button id="Save_New_Mdp_Vacancier" onclick="updatePassword()">Valider</button>
-            <button id="Close_Modal_mdp_Vacancier" onclick="closeModal()">Annuler</button>
+            <button id="Save_New_Mdp_Vacancier" >Valider</button>
+            <button id="Close_Modal_mdp_Vacancier" >Annuler</button>
         </div>
     </div>
 
