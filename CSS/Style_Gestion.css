@@ -7,6 +7,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 }
+/*---------------- Gestion Actif ----------------------*/
 .active {
     color: blue; /* couleur pour indiquer l'élément actif */
   }
@@ -15,8 +16,6 @@ body {
     cursor: pointer;
 }
 
-  
-
 .gestion_tableau {
     display: flex;
     justify-content: center;
@@ -24,14 +23,15 @@ body {
 }
 
 .structure{
-    margin-right: 3%; /* marge uniquement à droite */
+    margin-right: 3%; 
     size: 2vh;
 }
 .planning{
-    margin-left: 3%; /* marge uniquement à gauche */
+    margin-left: 3%; 
     size: 2vh;
 }
 
+/*---------------- Gestion Structure et Activité ----------------------*/
 table {
     margin-left: 5%;
     margin-right: 5%;
@@ -40,11 +40,10 @@ table {
     border-collapse: collapse;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2); /* Utilisation de rem pour l'ombre */
-    border-radius: 0.5rem; /* Utilisation de rem pour les coins arrondis */
+    border-radius: 0.5rem; 
 }
 
 th, td {
-    padding: 1rem; /* Utilisation de rem pour le padding */
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -61,58 +60,120 @@ tr:hover {
     display: none;
 }
 
+
+
+/*------------------------------- Style Boutton ---------------------------------------------------*/
 button {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    font-size: 1rem; /* Utilisation de rem pour la taille de la police */
     margin-left: 5%;
     margin-bottom: 0.5%;
 }
 
-#addRow, #addAnimation {
-    padding: 1rem 2rem; /* Utilisation de rem pour le padding du bouton */
+#addRow, #addAnimation, #addActivity, #validateActivity, #refreshPlanning {
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 0.25rem; /* Utilisation de rem pour les coins arrondis du bouton */
+    height: 3vh;
+    width: 15vw;
+    border-radius: 0.25rem; 
 }
 
-#addRow:hover, #addAnimation:hover {
-    background-color: #45a049;
+#addRow:hover, #addAnimation:hover, #addActivity:hover, #validateActivity:hover  , #refreshPlanning:hover  {
+    background-color: #218838; /* Vert plus clair */
+    box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
+    transform: scale(1.05);
 }
 
-/*Style planning*/
-
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+#cancelActivity {
+    background-color: #dc3545; /* Rouge */
+    color: white;
 }
 
-#planningContainer {
-    width: 80%;
-    margin: 20px auto;
+#cancelActivity:hover {
+    background-color: #c82333; /* Rouge plus clair */
+    box-shadow: 0px 0px 10px 0px rgba(220,53,69,0.75);
+    transform: scale(1.05);
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+/*------------------------------- Style planning ---------------------------------------------------*/
+#dateSelectors {
+    display: flex;
+    margin-left: 5%;
+    gap: 1%;
+    align-items: center; 
+}
+
+.titre-planning {
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.titre-planning h2{
+    margin-left: 5%;
+    margin-right: 3%;
+    size: 0.5vh;
 }
 
 table, th, td {
     border: 1px solid black;
+    height: 4vh;
 }
 
 th, td {
-    padding: 10px;
     text-align: left;
+    font-size: 1vw;
 }
 
 th {
     background-color: #f2f2f2;
 }
 
-/*    ---------------------------------------              */
 
 
+/* ---------------------------------   fenetre modal pour ajout Evenement dans le planning--------------------------------- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; /* Se situer au-dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* Activer le défilement si nécessaire */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: fit-content; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.select-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+
+.select-group select, .datetime-group input {
+    flex: 1; /* Égalise la largeur des éléments */
+    margin-right: 2%;
+}
+
+.button-group button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}

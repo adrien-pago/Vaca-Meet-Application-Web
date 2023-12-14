@@ -11,12 +11,6 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des structures</title>
     <link rel="stylesheet" href="/CSS/Style_Gestion.css">
-     <!-- Planning bibliothèque fullcalendar-->
-     <!-- CSS pour FullCalendar -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeng/9.0.6/resources/components/fullcalendar/fullcalendar.css">
-     <!-- Scripts JS pour FullCalendar et ses dépendances -->
-     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
-
 </head>
 
 <body>
@@ -66,6 +60,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
                 <tr>
                     <th>ID</th>
                     <th>Libellé</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="tableBodyAnimation">
@@ -74,21 +69,51 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         </table>
     </div>
 
-    <!-- gérer le planning -->
+   <!-- gérer le planning -->
     <div id="planning" style="display: none;">
         <div id="planningContainer">
-            <h2 id="planningTitle">Semaine du <span id="dateDebut"></span> au <span id="dateFin"></span></h2>
-            <button id="addActivity">Ajouter une activité</button>
-            <table id="planning-week"></table>
+                <div id="dateSelectors">
+                    <label for="startDate">Date de début (Lundi)</label>
+                    <input type="date" id="startDate" name="startDate">
+
+                    <label for="endDate">Date de fin (Dimanche)</label>
+                    <input type="date" id="endDate" name="endDate">
+
+                    <button id="refreshPlanning">Rafraîchir le planning</button>
+                </div>
+                <div class="titre-planning">
+                    <h2 id="planningTitle">Semaine du <span id="dateDebut"></span> au <span id="dateFin"></span></h2>
+                    <button id="addActivity">Ajouter une activité</button>
+                </div>
+            <table id="planning-week">
+                <!-- Les cellules du planning seront ajoutées dynamiquement ici -->
+            </table>
         </div>
     </div>
 
-    
+    <!-- Fenêtre modale pour ajouter un événement dans le planning -->
+    <div id="modalAddActivity" class="modal">
+        <div class="modal-content">
+            <h2>Ajout d'une activité</h2>
+            <div class="select-group">
+                <select id="activitySelect"></select>
+                <select id="structureSelect"></select>
+                <input type="datetime-local" id="startTime">
+                <input type="datetime-local" id="endTime">
+            </div>
+            <div class="button-group">
+                <button id="validateActivity">Valider</button>
+                <button id="cancelActivity">Annuler</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         var campingId = "<?php echo $campingId; ?>";  // Variable JavaScript pour l'ID du camping
         var campingName = "<?php echo $campingName; ?>";  // Variable JavaScript pour le nom du camping
     </script>
 
-    <script src="/JS/Gestion_Camping.js"></script>
+    <script src="/JS/Gestion_Camping.js" ></script>
+
 </body>
 </html>
