@@ -76,8 +76,8 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    height: 3vh;
-    width: 15vw;
+    height: 5vh;
+    width: 10vw;
     border-radius: 0.25rem; 
 }
 
@@ -89,6 +89,8 @@ button {
 
 #cancelActivity {
     background-color: #dc3545; /* Rouge */
+	height: 5vh;
+    width: 10vw;
     color: white;
 }
 
@@ -162,7 +164,6 @@ th {
     justify-content: space-between;
     margin-bottom: 2%;
 }
-
 
 .select-group select, .datetime-group input {
     flex: 1; /* Égalise la largeur des éléments */
