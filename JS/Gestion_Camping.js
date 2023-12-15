@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //////////////////// Gestion modification mdp vacancier /////////////////////////////
-    var validateButton = document.getElementById('validatePasswordButton');
+    var validateButton = document.getElementById('Save_New_Mdp_Vacancier');
     if (validateButton) {
         validateButton.addEventListener('click', updatePassword);
     } else {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (newPassword === confirmPassword) {
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/PHP/API_Update_MDP_Vacancier.php", true);
+            xhr.open('POST', '/PHP/API_Udpdate_MDP_Vacancier.php', true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {

@@ -9,10 +9,8 @@ body {
 }
 
 /*---------------- Gestion tire application ----------------------*/
-.Titre_Camping { display: flex; margin-left:  3%; margin-top: 2%;}
+.Titre_Camping { display: flex; margin-left:  3%; margin-top: 2%; margin-bottom: 5%;}
 .Titre_Camping h1{ font-size: 3vh;}
-.gestion_mdp_vacancier{display: flex; margin-left:  3%;}
-.gestion_mdp_vacancier h1{font-size: 2vh;}
 
 /*---------------- Gestion Modal modification mdp vacancier ----------------------*/
 .modal_mdp_vacancier{

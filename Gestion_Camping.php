@@ -25,10 +25,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <div class="Titre_Camping">
         <h1 id="Compte_Camping">Bienvenue au <span id="Nom_Camping"><?php echo htmlspecialchars($campingName); ?></span></h1>
         <button id="ComeBack" onclick="window.location.href='/index.php'">Déconnexion</button>
-    </div>
-    <div class="gestion_mdp_vacancier">
-        <h1>Modifier le mot de passe de l'application mobil pour les vacanciers</h1>
-        <button id="MDP_Vacancier">Modifier le mot de passe</button>
+        <button id="MDP_Vacancier">Modifier le mot de passe de l'application mobil pour les vacanciers</button>
     </div>
 
     <!-- Fenêtre modale pour modifier le mot de passe des vacanciers -->
