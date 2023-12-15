@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+      // Récupération de l'ID et du nom de camping depuis le formulaire
+      var id_camping = document.getElementById('campingForm').elements['id'].value; 
+      var nom_camping = document.getElementById('campingForm').elements['camping_name'].value;
 
         //////////////////// Gestion ouverture fenêtre modale mdp vacancier /////////////////////////////
         var mdpVacancierButton = document.getElementById('MDP_Vacancier');
@@ -60,23 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-
-
-    ///////////////////////// Gestion de l'élément Actif //////////////////////////////////
-    // Récupération de l'ID du camping depuis le formulaire
-    var id_camping = document.getElementById('campingForm').elements['id'].value; 
-    console.log(id_camping); // Affiche l'ID_CAMPING dans la console pour debug
-
-    // Récupération de l'ID du camping depuis le formulaire
-    var nom_camping = document.getElementById('campingForm').elements['camping_name'].value; 
-    console.log(nom_camping); // Affiche l'ID_CAMPING dans la console pour debug
-
-    // Vérifiez si id_camping est non vide
-    if (!id_camping) {
-        console.error('ID du camping est vide');
-        return;
-    }
-
     ///////////// Gestion Element Actif //////////////////////////////
     var gestionStructureBtn = document.getElementById('gestionStructure');
     var gestionAnimationBtn = document.getElementById('gestionAnimation');
@@ -116,8 +102,6 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error('Un ou plusieurs éléments requis sont introuvables dans le DOM');
     }
 
-
-    ////////////////////////////// Gestion Structure ///////////////////////////////////////////////////
     ////////////////////////////// Gestion Structure ///////////////////////////////////////////////////
 // Récupère les informations du camping avec le bon ID
 function fetchData() {
@@ -455,8 +439,6 @@ document.getElementById("tableBody").addEventListener("click", function(e) {
         }
     });
 
-
-
    ///////////////////////////////////// Gestion Planning /////////////////////////////////////////////////
     // Fonction pour obtenir le lundi et le dimanche de la semaine actuelle
 function getWeekStartAndEndDates() {
@@ -592,9 +574,7 @@ function getWeekStartAndEndDates() {
             console.error("Indices invalides pour rowIndex ou colIndex");
         }
     }
-
-     
-   
+  
     ///////////////////////////////// Fenetre Modal pour ajout d'évènement dans le planning /////////////////////////////////////////
     //récupérer la liste des activité dans une combo
     function fetchActivitiesForSelect() {
