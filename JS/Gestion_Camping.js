@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (newPassword === confirmPassword) {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/PHP/API_Udpdate_MDP_Vacancier.php', true);
+            xhr.open('POST', '/PHP/API_update_mdp_vacancier.php', true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
