@@ -14,8 +14,8 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("
-        SELECT LIBELLE_ACT, DATE_HEURE_DEBUT, DATE_HEURE_FIN 
-        FROM ACTIVITE 
+        SELECT LIB_ACTIVITE, DATE_HEURE_DEBUT, DATE_HEURE_FIN 
+        FROM EVENEMENT
         WHERE ID_CAMPING = :id_camping 
         AND DATE_HEURE_DEBUT >= :dateDebut 
         AND DATE_HEURE_FIN <= :dateFin
