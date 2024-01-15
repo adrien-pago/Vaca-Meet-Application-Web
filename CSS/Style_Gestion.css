@@ -85,6 +85,10 @@ tr:hover {
 .hidden {
     display: none;
 }
+/* Masquer la colonne ID */
+.hidden_Id {
+    display: none;
+}
 
 
 

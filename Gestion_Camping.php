@@ -58,7 +58,6 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <table>
         <thead>
             <tr>
-                <th>ID Structure</th>
                 <th>Camping</th>
                 <th>Infrastructure</th>
                 <th>Nombre</th>
@@ -77,7 +76,6 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Libellé</th>
                     <th>Actions</th>
                 </tr>
@@ -132,7 +130,12 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         var campingName = "<?php echo $campingName; ?>";  // Variable JavaScript pour le nom du camping
     </script>
 
-    <script src="/JS/Gestion_Camping.js" ></script>
+    <script type="module" src="/JS/Element_Actif.js" ></script>
+    <script type="module" src="/JS/Modal_Mdp_Vacancier.js" ></script>
+    <script type="module" src="/JS/Gestion_Activite.js" ></script>
+    <script type="module" src="/JS/Gestion_Structure.js"></script>
+    <script type="module" src="/JS/Gestion_Planning.js" ></script>
+    
 
 </body>
 </html>
