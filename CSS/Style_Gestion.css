@@ -2,66 +2,73 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('/ASSET/fond_gestion.jpg');
+    background-image: url('/ASSET/fond-vaca-2.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
 }
 
-/*---------------- Gestion tire application ----------------------*/
-.Titre_Camping { display: flex; margin-left:  3%; margin-top: 2%; margin-bottom: 5%;}
-.Titre_Camping h1{ font-size: 3vh;}
+.Titre_Camping {
+    display: flex;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
 
-/*---------------- Gestion Modal modification mdp vacancier ----------------------*/
-.modal_mdp_vacancier{
+.Titre_Camping h1 {
+    font-size: 3vw;
+    color: #fefefe;
+}
+
+/*----------------------- Fenetre Modal mdp-vacancier --------------------------------- */
+.modal_mdp_vacancier {
     background-color: #fefefe;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    position: fixed; /* Position fixe */
-    top: 0; /* En haut de la page */
-    left: 50%; /* Centré horizontalement */
-    transform: translateX(-50%); /* Décalage pour un centrage parfait */
-    width: 90%; /* Largeur adaptée à l'écran, peut être ajustée */
-    height: 20vh;
-    max-width: 600px; /* Largeur maximale pour les grands écrans */
+    position: fixed;
+    top: 10%; /* Centrer un peu plus bas */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 30vh; /* Augmentation de la hauteur */
+    max-width: 600px;
+    padding: 2vh; /* Ajout de padding */
+    overflow: auto; /* Permettre le défilement si nécessaire */
 }
 
 .modal-content-mdp {
-    width: 100%; /* Largeur complète à l'intérieur de la fenêtre modale */
-    margin: auto; /* Centrage automatique */
+    width: 100%;
     display: flex;
-    align-items: center; 
-    height: 100%;
+    flex-direction: column; /* Éléments en colonne */
+    align-items: center; /* Centrer les éléments */
+    justify-content: space-around; /* Répartir uniformément */
 }
 
-#confirmPassword{
-    margin-bottom: 5%;
-    size: 10%;
-}
-#newPassword{
-    margin-bottom: 5%;
-    margin-right: 2%;
-    margin-left: 2%;
-}
-#Save_New_Mdp_Vacancier{
-    margin-right: 1%;
-    margin-bottom: 5%;
-}
-#Close_Modal_mdp_Vacancier{
-    margin-right: 2%;
-    margin-bottom: 5%;
+#confirmPassword, #newPassword {
+    width: 70%; /* Agrandir la largeur */
+    margin: 1vh 0; /* Ajuster la marge */
 }
 
+#Save_New_Mdp_Vacancier, #Close_Modal_mdp_Vacancier {
+    margin-top: 1vh;
+    font-size: 1.2vw;
+    padding: 1vh 2vw;
+}
+
+.modal_mdp_vacancier h2 {
+    margin-bottom: 2vh; /* Ajuster la marge du bas */
+}
+/*-------------------------------- End Fenetre Modal mdp-vacancier -------------------------------------- */
 
 
-.modal_mdp_vacancier h2{font-size: 3vh; color: #4CAF50; margin-left: 5%;}
-/*---------------- Gestion Actif ----------------------*/
 .active {
-    color: blue; /* couleur pour indiquer l'élément actif */
-  }
+    color: blue;
+}
 
-  #gestionStructure, #gestionPlanning, #gestionAnimation { /* pointeur souri sur l'élément */
+#gestionStructure, #gestionPlanning, #gestionAnimation {
     cursor: pointer;
+    margin-left: 3%; margin-right:  3%;
 }
 
 .gestion_tableau {
@@ -70,31 +77,113 @@ body {
     align-items: center;
 }
 
-.structure{
-    margin-right: 3%; 
-    size: 2vh;
-}
-.planning{
-    margin-left: 3%; 
-    size: 2vh;
+.structure, .planning, .animation {
+    margin: 0 3%;
+    font-size: 2vw;
 }
 
-/*---------------- Gestion Structure et Activité ----------------------*/
-table {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 100%;
-    max-width: 90vw; /* Utilisation de vw pour la largeur maximale */
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5vw;
+    padding: 1vh 1vw;
+    border-radius: 0.25rem;
+}
+
+#addRow, #addAnimation, #addActivity, #validateActivity, #ComeBack, #MDP_Vacancier, #Save_New_Mdp_Vacancier {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+#addRow:hover, #addAnimation:hover, #addActivity:hover, #validateActivity:hover, #ComeBack:hover, #MDP_Vacancier:hover, #Save_New_Mdp_Vacancier:hover {
+    background-color: #218838;
+    box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
+    transform: scale(1.05);
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+#refreshPlanning{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+#refreshPlanning:hover{
+    background-color: #218838;
+    box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
+    transform: scale(1.05); 
+}
+
+#cancelActivity, #Close_Modal_mdp_Vacancier {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    margin-bottom: 2%;
+
+}
+
+#cancelActivity:hover, #Close_Modal_mdp_Vacancier:hover {
+    background-color: #c82333;
+    box-shadow: 0px 0px 10px 0px rgba(220,53,69,0.75);
+    transform: scale(1.05);
+}
+
+#dateSelectors {
+    display: flex;
+    margin-left: 3%;
+    margin-top: 5%;
+    gap: 1%;
+    align-items: center;
+    font-size: 1.8vw;
+}
+
+input.startDate{
+    font-size: 1.1vw;
+}
+
+input.endDate{
+    font-size: 1.1vw;
+}
+
+.titre-planning {
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.titre-planning h2 {
+    margin-right: 3%;
+    font-size: 2vw;
+}
+
+table{
+    width: 100%; 
+    max-width: 93%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 3%;
     border-collapse: collapse;
     background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2); /* Utilisation de rem pour l'ombre */
-    border-radius: 0.5rem; 
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    table-layout: fixed; /* Colonne de largeur fixe */
+    height: 93vh; /* Hauteur adaptée à la vue */
+    overflow: auto; /* Permettre le défilement */
 }
 
 th, td {
     border: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
+    padding: 1vh 1vw;
+    font-size: 2vh;
 }
+
 
 th {
     background-color: #f2f2f2;
@@ -104,108 +193,28 @@ tr:hover {
     background-color: #f5f5f5;
 }
 
-.hidden {
-    display: none;
-}
-/* Masquer la colonne ID */
-.hidden_Id {
+.hidden, .hidden_Id {
     display: none;
 }
 
-
-
-/*------------------------------- Style Boutton ---------------------------------------------------*/
-button {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    margin-left: 5%;
-    margin-bottom: 0.5%;
-    font-size: 1em; 
-    width: auto;
-}
-
-#addRow, #addAnimation, #addActivity, #validateActivity, #refreshPlanning, #ComeBack, #MDP_Vacancier, #Save_New_Mdp_Vacancier {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.25rem; 
-}
-
-#addRow:hover, #addAnimation:hover, #addActivity:hover, #validateActivity:hover  , #refreshPlanning:hover , #ComeBack:hover, #MDP_Vacancier:hover, #Save_New_Mdp_Vacancier:hover {
-    background-color: #218838; /* Vert plus clair */
-    box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
-    transform: scale(1.05);
-}
-
-#cancelActivity, #Close_Modal_mdp_Vacancier {
-    background-color: #dc3545; /* Rouge */
-    color: white;
-}
-
-#cancelActivity:hover, #Close_Modal_mdp_Vacancier:hover {
-    background-color: #c82333; /* Rouge plus clair */
-    box-shadow: 0px 0px 10px 0px rgba(220,53,69,0.75);
-    transform: scale(1.05);
-}
-
-/*------------------------------- Style planning ---------------------------------------------------*/
-#dateSelectors {
-    display: flex;
-    margin-left: 5%;
-    gap: 1%;
-    align-items: center; 
-}
-
-.titre-planning {
-    display: flex;
-    align-items: center;
-    margin-top: 2%;
-}
-
-.titre-planning h2{
-    margin-left: 5%;
-    margin-right: 3%;
-    size: 0.5vh;
-}
-
-table, th, td {
-    border: 1px solid black;
-    height: 4vh;
-}
-
-th, td {
-    text-align: left;
-    font-size: 1vw;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-
-
-/* ---------------------------------   fenetre modal pour ajout Evenement dans le planning--------------------------------- */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; /* Se situer au-dessus de tout */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; /* Activer le défilement si nécessaire */
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
+    margin: 15% auto;
+    padding: 2vh 2vw;
     border: 1px solid #888;
-    width: fit-content; 
+    width: 80vw;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -215,8 +224,8 @@ th {
     margin-bottom: 2%;
 }
 
-.select-group select, .datetime-group input {
-    flex: 1; /* Égalise la largeur des éléments */
+.select-group select, .select-group input {
+    flex: 1;
     margin-right: 2%;
 }
 
