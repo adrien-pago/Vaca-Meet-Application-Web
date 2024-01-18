@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var mdpVacancierButton = document.getElementById('MDP_Vacancier');
       if (mdpVacancierButton) {
           mdpVacancierButton.addEventListener('click', function() {
-              document.getElementById('modal_md_vacancier').style.display = 'block';
+              document.getElementById('modal_mdp_vacancier').style.display = 'block';
           });
       } else {
           console.error("L'élément 'MDP_Vacancier' est introuvable dans le DOM.");
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var mdpVacancierButton = document.getElementById('MDP_Vacancier');
   if (mdpVacancierButton) {
       mdpVacancierButton.addEventListener('click', function() {
-          document.getElementById('modal_md_vacancier').style.display = 'block';
+          document.getElementById('modal_mdp_vacancier').style.display = 'block';
       });
   } else {
       console.error("L'élément 'MDP_Vacancier' est introuvable dans le DOM.");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function closeModal() {
-      document.getElementById('modal_md_vacancier').style.display = 'none';
+      document.getElementById('modal_mdp_vacancier').style.display = 'none';
   }
 
   function updatePassword() {

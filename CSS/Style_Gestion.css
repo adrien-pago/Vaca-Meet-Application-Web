@@ -14,25 +14,39 @@ body {
 
 /*---------------- Gestion Modal modification mdp vacancier ----------------------*/
 .modal_mdp_vacancier{
+    background-color: #fefefe;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     margin-left:  3%;
-    width: fit-content; 
-    width: 100%; 
-    height: 100%;
+    width: 100%;   
+    height: 20vh;
 }
-#newPassword {
+#confirmPassword{
+    margin-bottom: 5%;
+    size: 10%;
+}
+#newPassword{
+    margin-bottom: 5%;
+    margin-right: 2%;
+}
+#Save_New_Mdp_Vacancier{
     margin-right: 1%;
+    margin-bottom: 5%;
+}
+#Close_Modal_mdp_Vacancier{
+    margin-right: 2%;
+    margin-bottom: 5%;
 }
 
 .modal-content-mdp {
+    width: fit-content; 
+    margin-left: 2%;
     display: flex;
     align-items: center; 
-    padding: 15px; 
-    width: fit-content; 
-    width: 100%; 
     height: 100%;
 }
 
-.modal_mdp_vacancier h2{font-size: 2vh;}
+.modal_mdp_vacancier h2{font-size: 3vh; color: #4CAF50; margin-left: 5%;}
 /*---------------- Gestion Actif ----------------------*/
 .active {
     color: blue; /* couleur pour indiquer l'élément actif */
