@@ -17,10 +17,23 @@ body {
     background-color: #fefefe;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    margin-left:  3%;
-    width: 100%;   
+    position: fixed; /* Position fixe */
+    top: 0; /* En haut de la page */
+    left: 50%; /* Centré horizontalement */
+    transform: translateX(-50%); /* Décalage pour un centrage parfait */
+    width: 90%; /* Largeur adaptée à l'écran, peut être ajustée */
     height: 20vh;
+    max-width: 600px; /* Largeur maximale pour les grands écrans */
 }
+
+.modal-content-mdp {
+    width: 100%; /* Largeur complète à l'intérieur de la fenêtre modale */
+    margin: auto; /* Centrage automatique */
+    display: flex;
+    align-items: center; 
+    height: 100%;
+}
+
 #confirmPassword{
     margin-bottom: 5%;
     size: 10%;
@@ -28,6 +41,7 @@ body {
 #newPassword{
     margin-bottom: 5%;
     margin-right: 2%;
+    margin-left: 2%;
 }
 #Save_New_Mdp_Vacancier{
     margin-right: 1%;
@@ -38,13 +52,7 @@ body {
     margin-bottom: 5%;
 }
 
-.modal-content-mdp {
-    width: fit-content; 
-    margin-left: 2%;
-    display: flex;
-    align-items: center; 
-    height: 100%;
-}
+
 
 .modal_mdp_vacancier h2{font-size: 3vh; color: #4CAF50; margin-left: 5%;}
 /*---------------- Gestion Actif ----------------------*/
