@@ -90,25 +90,51 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Fonction pour charger et afficher le planning
-    function loadAndDisplayPlanning() {
-        let { dateDebut, dateFin } = getWeekStartAndEndDates();
-        document.getElementById('dateDebut').textContent = dateDebut;
-        document.getElementById('dateFin').textContent = dateFin;
-        let planningWeek = document.getElementById("planning-week");
-        planningWeek.innerHTML = "";
 
-        createTableStructure(planningWeek);
+// Fonction pour charger et afficher le planning
+function loadAndDisplayPlanning() {
+    let { dateDebut, dateFin } = getWeekStartAndEndDates();
 
-        // Appel AJAX pour récupérer les activités
-        fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}&dateDebut=${dateDebut}&dateFin=${dateFin}`)
-            .then(response => response.json())
-            .then(events => {
-                events.forEach(event => {
-                    insertEventInPlanning(event);
-                });
-            });
-    }
+    // Formatage des dates pour affichage
+    let formattedDateDebut = formatDateForDisplay(dateDebut);
+    let formattedDateFin = formatDateForDisplay(dateFin);
+
+    document.getElementById('dateDebut').textContent = formattedDateDebut;
+    document.getElementById('dateFin').textContent = formattedDateFin;
+
+    let planningWeek = document.getElementById("planning-week");
+    planningWeek.innerHTML = "";
+
+    createTableStructure(planningWeek);
+
+     // Appel AJAX pour récupérer les activités
+     fetch(`/PHP/API_PLANNING/API_Fetch.php?id_camping=${campingId}&dateDebut=${dateDebut}&dateFin=${dateFin}`)
+     .then(response => response.json())
+     .then(events => {
+         events.forEach(event => {
+             insertEventInPlanning(event);
+         });
+     })
+     .catch(error => {
+         console.error('Erreur lors de la récupération des activités:', error);
+     });
+}
+
+/// Fonction pour mettre la première lettre de chaque mot en majuscule
+function capitalizeFirstLetter(string) {
+    return string.replace(/\b(\w)/g, s => s.toUpperCase());
+}
+
+// Fonction pour formater les dates 'AAAA-MM-JJ' pour affichage 'Jour XX Mois YYYY' avec majuscules
+function formatDateForDisplay(dateString) {
+    let date = new Date(dateString);
+    let options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    let dateStringFormatted = date.toLocaleDateString('fr-FR', options);
+
+    // Appliquer la majuscule sur le premier caractère de chaque mot
+    return capitalizeFirstLetter(dateStringFormatted);
+}
+
 
     // Fonction pour insérer un événement dans le planning
     function insertEventInPlanning(event) {
