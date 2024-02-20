@@ -9,23 +9,23 @@ En plus de répondre au contexte les applications ont pour objectif de modernise
 Une application web qui va servir d’interface pour les gérant des campings. A partir de laquelle ils vont pouvoir gérer leurs structures, leurs activités et leurs planning d’animation. Ils vont aussi pouvoir gérer le mot de passe qu’ils vont ensuite donner aux vacanciers pour qu’ils aient accès aux plannings d’animation du camping et aux activités proposé par les vacancier depuis leur téléphone.
   
 **2. Fonctionnalités**
-<u>Connexion et création de compte</u> 
+_Connexion et création de compte_
 Une page simple avec pour identification nom de camping et mot de passe.
 Un bouton connexion pour accéder à l’application.
 Un bouton création de compte pour permettre au camping de se créer un compte à l’aide d’une fenêtre modal.
 
-<u>fenêtre modal de création de compte:</u>
+_fenêtre modal de création de compte:_
 Un formulaire de création avec nom de camping, mot de passe, adresse email, N°  de Siret.
 Une vérification avec un jeton Token envoyer par email pour confirmer l’inscription.
 stocker seulement le hash du mot de passe en base de donnée.(Sécurité)
 
-<u>Paramétrage pour la gestion des (Activités, Structure, Plannings animations)</u>
+_Paramétrage pour la gestion des (Activités, Structure, Plannings animations)_
 Identification par camping récupéré.
 Gérer la listes des structures avec une table (Ajout / modification / suppression).
 Gérer la listes des activités avec une table (Ajout / modification / suppression).
 Permettre de gérer et d’afficher le planning semaine des animations proposé par le camping.
 
-<u>Gérer le mot de passe pour les vacanciers</u>
+_Gérer le mot de passe pour les vacanciers_
 Avec un bouton permettre la modification du mot de passe qui sera utilisé par les vacanciers pour l’application mobile.
 
 
