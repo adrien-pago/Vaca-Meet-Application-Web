@@ -3,6 +3,8 @@
 **Contexte**   
 Les campings sont souvent des lieux où les vacanciers cherchent à se détendre et à s'amuser. Cependant, bon nombre d'entre eux se retrouvent souvent isolés et n’osent pas proposer d’activités aux autres vacanciers afin de faire des rencontres et de partager des moments conviviaux. Ou parfois même ils n’ont pas connaissances des diverses activités proposées au sein du camping.
 
+En plus de répondre au contexte les applications ont pour objectif de moderniser le camping et de le rendre plus attractif. Les applications ont donc pour objectif d’être responsive dans un style moderne avec une facilité d’utilisation. Tout en respectant les règles de sécurités informatiques et les normes.
+
 **1. Objectifs** 
 Une application web qui va servir d’interface pour les gérant des campings. A partir de laquelle ils vont pouvoir gérer leurs structures, leurs activités et leurs planning d’animation. Ils vont aussi pouvoir gérer le mot de passe qu’ils vont ensuite donner aux vacanciers pour qu’ils aient accès aux plannings d’animation du camping et aux activités proposé par les vacancier depuis leur téléphone.
   
