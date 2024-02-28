@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config.php';
 
 try {
     $id_camping = $_GET['id_camping'];
