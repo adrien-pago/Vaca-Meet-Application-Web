@@ -286,7 +286,6 @@ document.getElementById("tableBody").addEventListener("click", function(e) {
             data.forEach(row => {
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
-                    <td>${row.ID_ACTIVITE}</td>
                     <td>${row.LIBELLE_ACT}</td>
                     <td>
                         <button class="edit">🖉</button>

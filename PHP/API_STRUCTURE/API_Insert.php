@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+include 'config.php';
 
 $libelle_structure = $_POST['libelle_structure'];
 $nb_structure = $_POST['nb_structure'];

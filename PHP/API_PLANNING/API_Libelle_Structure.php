@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+include 'config.php';
 
 try {
     $id_camping = isset($_GET['id_camping']) ? $_GET['id_camping'] : null;
