@@ -46,14 +46,14 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         <div class="modal-content-Gestion-Compte">
             <h2> Nom du camping </h2>
             <input type="Texte" id="NomCampingCompte">
-            <h2> M>ot de passe </h2>
+            <h2> Mot de passe </h2>
             <input type="Texte" id="PasswordCompte">
             <h2> Numéro de Siret</h2>
             <input type="Texte" id="NumeroSiretCompte">
             <h2> Email</h2>
             <input type="Texte" id="EmailCompte">
             <button id="Save_Update_Compte" >Valider les modification</button>
-            <button id="Delete_Compte" >SSupprimer le compte</button>
+            <button id="Delete_Compte" >Supprimer le compte</button>
             <button id="Close_Modal_Gestion_Compte" >Fermer la fenêtre de gestion du compte</button>
         </div>
     </div>
