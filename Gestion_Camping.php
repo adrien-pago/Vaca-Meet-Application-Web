@@ -14,7 +14,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
 </head>
 
 <body>
-    <!-- Formulaire caché pour récupérer l'ID et le nom du camping -->  ²
+    <!-- Formulaire caché pour récupérer l'ID et le nom du camping -->  
     <form id="campingForm" method="POST" style="display: none;">
         <input type="hidden" name="id" id="campingId" value="<?php echo $campingId; ?>">
         <input type="hidden" name="camping_name" id="campingName" value="<?php echo $campingName; ?>">
