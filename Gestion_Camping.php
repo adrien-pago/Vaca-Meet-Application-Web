@@ -21,7 +21,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     </form>
     <!-- ------------------------------------->
 
-    <!-- gérer le titre et la modification mdp vacancier -->
+    <!-- gérer le titre, la gestion du compte et la modification mdp vacancier -->
     <div class="Titre_Camping">
         <h1 id="Compte_Camping">Bienvenue au <br> <span id="Nom_Camping"><?php echo htmlspecialchars($campingName); ?></span></h1>
         <button id="ComeBack" onclick="window.location.href='/index.php'">Déconnexion</button>

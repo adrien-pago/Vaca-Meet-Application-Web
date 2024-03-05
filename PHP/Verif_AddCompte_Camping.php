@@ -60,15 +60,15 @@ $base_url = "http://vaca-meet.fr";
 $confirmation_link = $base_url . '/PHP/confirm_Token.php?token=' . $confirm_token;
 
 $mail = new PHPMailer(true);
-$mail->SMTPDebug = 0;
+$mail->SMTPDebug = 2; // Active le mode débogage SMTP
 try {
     $mail->isSMTP();                                     
     $mail->Host = 'smtp.ionos.fr';                      
     $mail->SMTPAuth = true;                              
-    $mail->Username = 'adrien-pago@vaca-meet.fr'; 
-    $mail->Password = 'RG3SrzY7PhvnWQh';              
+    $mail->Username = 'support-technique@vaca-meet.fr'; 
+    $mail->Password = 'Support-AntiHackMessagerie489?';              
     $mail->SMTPSecure = 'tls';                           
-    $mail->Port = 25; //587 de base //Essayer 465
+    $mail->Port = 587; 
   
     $mail->setFrom('adrien-pago@vaca-meet.fr', 'Support Technique');
     $mail->addAddress($email);
@@ -87,7 +87,7 @@ try {
         echo json_encode(['status' => 'error', 'message' => "Une erreur s'est produite lors de la création de votre compte. Veuillez réessayer."]);
     }
 } catch (Exception $e) {
-    echo json_encode(['status' => 'error', 'message' => "Une erreur s'est produite lors de l'envoi de l'e-mail de confirmation. Veuillez réessayer."]);
+    echo json_encode(['status' => 'error', 'message' => "Une erreur s'est produite lors de l'envoi de l'e-mail de confirmation. Veuillez réessayer. Erreur : " . $mail->ErrorInfo]);
 }
 
 $stmt->close();
