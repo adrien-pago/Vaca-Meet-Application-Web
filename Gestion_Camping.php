@@ -25,6 +25,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <div class="Titre_Camping">
         <h1 id="Compte_Camping">Bienvenue au <br> <span id="Nom_Camping"><?php echo htmlspecialchars($campingName); ?></span></h1>
         <button id="ComeBack" onclick="window.location.href='/index.php'">Déconnexion</button>
+        <button id="GestionCompte" >Gestion Compte</button>
         <button id="MDP_Vacancier">Modifier le mot de passe de l'application mobil pour les vacanciers</button>
     </div>
 
@@ -36,6 +37,24 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
             <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe">
             <button id="Save_New_Mdp_Vacancier" >Valider</button>
             <button id="Close_Modal_mdp_Vacancier" >Annuler</button>
+        </div>
+    </div>
+
+        <!-- Fenêtre modale pour la Gestion du compte -->
+        <div id="modal_Gestion_Compte" class="modal_Gestion_Compte" style="display:none;">
+            <h2>Gestion du compte camping</h2>
+        <div class="modal-content-Gestion-Compte">
+            <h2> Nom du camping </h2>
+            <input type="Texte" id="NomCampingCompte">
+            <h2> M>ot de passe </h2>
+            <input type="Texte" id="PasswordCompte">
+            <h2> Numéro de Siret</h2>
+            <input type="Texte" id="NumeroSiretCompte">
+            <h2> Email</h2>
+            <input type="Texte" id="EmailCompte">
+            <button id="Save_Update_Compte" >Valider les modification</button>
+            <button id="Delete_Compte" >SSupprimer le compte</button>
+            <button id="Close_Modal_Gestion_Compte" >Fermer la fenêtre de gestion du compte</button>
         </div>
     </div>
 
@@ -132,6 +151,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
 
     <script type="module" src="/JS/Element_Actif.js" ></script>
     <script type="module" src="/JS/Modal_Mdp_Vacancier.js" ></script>
+    <script type="module" src="/JS/Modal_Gestion_Compte.js" ></script>
     <script type="module" src="/JS/Gestion_Activite.js" ></script>
     <script type="module" src="/JS/Gestion_Structure.js"></script>
     <script type="module" src="/JS/Gestion_Planning.js" ></script>

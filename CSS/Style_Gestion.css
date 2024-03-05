@@ -61,6 +61,35 @@ body {
 }
 /*-------------------------------- End Fenetre Modal mdp-vacancier -------------------------------------- */
 
+/*----------------------- Fenetre Modal Gestion Compte --------------------------------- */
+.modal_Gestion_Compte {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: fixed;
+    top: 10%; /* Centrer un peu plus bas */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 30vh; /* Augmentation de la hauteur */
+    max-width: 600px;
+    padding: 2vh; /* Ajout de padding */
+    overflow: auto; /* Permettre le défilement si nécessaire */
+}
+
+.modal-content-Gestion-Compte {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Éléments en colonne */
+    align-items: center; /* Centrer les éléments */
+    justify-content: space-around; /* Répartir uniformément */
+}
+
+.modal_Gestion_Compte  h2 {
+    margin-bottom: 2vh; /* Ajuster la marge du bas */
+}
+/*-------------------------------- End Fenetre Modal Gestion Compte -------------------------------------- */
+
 /* Gestion Actif */
 .gestion_tableau{
 display: flex;
