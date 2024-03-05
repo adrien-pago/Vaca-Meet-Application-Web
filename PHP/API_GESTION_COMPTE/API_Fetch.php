@@ -9,6 +9,7 @@ try {
     // Requête SQL pour récupérer les informations du camping
     $stmt = $conn->prepare("SELECT NOM_CAMPING, NUM_SIRET, EMAIL FROM CAMPING WHERE ID_CAMPING = :id_camping");
     $stmt->bindParam(':id_camping', $_POST['id_camping']); 
+
     $stmt->execute();
 
     $campingData = $stmt->fetch(PDO::FETCH_ASSOC);
