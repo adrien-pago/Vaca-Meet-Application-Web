@@ -1,4 +1,8 @@
 // Afficher la fenêtre modale pour la gestion du compte
+<<<<<<< HEAD
+=======
+// ajouter token CRSF
+>>>>>>> 6e35e4d640daf62f8978e9b17dfd192bc6dd3647
 document.getElementById('GestionCompte').addEventListener('click', function() {
     document.getElementById('modal_Gestion_Compte').style.display = 'block';
 });
