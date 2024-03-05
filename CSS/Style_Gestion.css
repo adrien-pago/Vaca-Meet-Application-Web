@@ -61,6 +61,63 @@ body {
 }
 /*-------------------------------- End Fenetre Modal mdp-vacancier -------------------------------------- */
 
+/*----------------------- Fenetre Modal Gestion Compte --------------------------------- */
+.modal_Gestion_Compte {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: fixed;
+    top: 10%; /* Centrer un peu plus bas */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    max-width: 600px;
+    padding: 2vh; /* Ajout de padding */
+    overflow: auto; /* Permettre le défilement si nécessaire */
+}
+
+/* Styles pour le contenu de la fenêtre modale de gestion de compte */
+.modal-content-Gestion-Compte {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Éléments en colonne */
+    align-items: center; /* Centrer les éléments */
+}
+
+/* Styles pour les en-têtes des champs */
+.modal-content-Gestion-Compte h2 {
+    margin-bottom: 1vh; /* Ajuster la marge du bas */
+}
+
+/* Styles pour les champs de saisie */
+.modal-content-Gestion-Compte input[type="text"] {
+    width: 80%; /* Largeur des champs de saisie */
+    margin-bottom: 1vh; /* Espacement entre les champs */
+    padding: 1vh; /* Ajout de rembourrage */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 4px; /* Bordure arrondie */
+}
+
+/* Styles pour les boutons */
+.modal-content-Gestion-Compte button {
+    margin-top: 2%;
+    width: 80%; /* Largeur des boutons */
+    margin-bottom: 1vh; /* Espacement entre les boutons */
+    padding: 1vh; /* Ajout de rembourrage */
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Suppression de la bordure */
+    border-radius: 4px; /* Bordure arrondie */
+    cursor: pointer; /* Curseur de souris pointer */
+    transition: background-color 0.3s; /* Transition fluide de la couleur de fond */
+}
+
+/* Au survol, changez la couleur de fond du bouton */
+.modal-content-Gestion-Compte button:hover {
+    background-color: #45a049;
+}
+/*-------------------------------- End Fenetre Modal Gestion Compte -------------------------------------- */
+
 /* Gestion Actif */
 .gestion_tableau{
 display: flex;
@@ -107,8 +164,6 @@ align-items: center;
 font-size: 1.8vw;
 }
 
-
-
 button {
 cursor: pointer;
 background-color: transparent;
@@ -118,14 +173,14 @@ padding: 1vh 1vw;
 border-radius: 0.25rem;
 }
 
-#addRow, #addAnimation, #addActivity, #validateActivity, #ComeBack, #MDP_Vacancier, #Save_New_Mdp_Vacancier {
+#addRow, #addAnimation, #addActivity, #validateActivity, #ComeBack,#GestionCompte, #MDP_Vacancier, #Save_New_Mdp_Vacancier {
 background-color: #4CAF50;
 color: white;
 border: none;
 margin-left: 3%;
 }
 
-#addRow:hover, #addAnimation:hover, #addActivity:hover, #validateActivity:hover, #ComeBack:hover, #MDP_Vacancier:hover, #Save_New_Mdp_Vacancier:hover {
+#addRow:hover, #addAnimation:hover, #addActivity:hover, #validateActivity:hover, #ComeBack:hover,#GestionCompte:hover, #MDP_Vacancier:hover, #Save_New_Mdp_Vacancier:hover {
 background-color: #218838;
 box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
 transform: scale(1.05);
