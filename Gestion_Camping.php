@@ -25,14 +25,13 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
     <div class="Titre_Camping">
         <h1 id="Compte_Camping">Bienvenue au <br> <span id="Nom_Camping"><?php echo htmlspecialchars($campingName); ?></span></h1>
         <button id="ComeBack" onclick="window.location.href='/index.php'">Déconnexion</button>
-        <button id="MDP_Vacancier">Modifier le mot de passe de l'application mobile pour les vacanciers</button>
         <button id="GestionCompte" >Gestion Compte</button>
-        <button id="MDP_Vacancier">Modifier le mot de passe de l'application mobil pour les vacanciers</button>
+        <button id="MDP_Vacancier">Modifier le mot de passe de l'application smartphone pour les vacanciers</button>
     </div>
 
     <!-- Fenêtre modale pour modifier le mot de passe des vacanciers -->
     <div id="modal_mdp_vacancier" class="modal_mdp_vacancier" style="display:none;">
-            <h2>Modifier le mot de passe pour les vacanciers</h2>
+        <h2>Modifier le mot de passe pour les vacanciers</h2>
         <div class="modal-content-mdp">
             <input type="password" id="newPassword" placeholder="Nouveau mot de passe">
             <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe">
@@ -41,22 +40,38 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         </div>
     </div>
 
-        <!-- Fenêtre modale pour la Gestion du compte -->
-        <div id="modal_Gestion_Compte" class="modal_Gestion_Compte" style="display:none;">
-            <h2>Gestion du compte camping</h2>
+    <!-- Fenêtre modale pour la Gestion du compte -->
+    <div id="modal_Gestion_Compte" class="modal_Gestion_Compte" style="display:none;">
+        <h1>Gestion du compte camping</h1>
         <div class="modal-content-Gestion-Compte">
-            <h2> Nom du camping </h2>
-            <input type="Texte" id="NomCampingCompte">
-            <h2> Mot de passe </h2>
-            <input type="Texte" id="PasswordCompte">
-            <h2> Numéro de Siret</h2>
-            <input type="Texte" id="NumeroSiretCompte">
-            <h2> Email</h2>
-            <input type="Texte" id="EmailCompte">
-            <button id="Save_Update_Compte" >Valider les modification</button>
-            <button id="Delete_Compte" >Supprimer le compte</button>
-            <button id="Close_Modal_Gestion_Compte" >Fermer la fenêtre de gestion du compte</button>
+            <div class="input-group">
+                <h2> Nom du camping :</h2>
+                <input id="NomCampingCompte">
+            </div>
+            <div class="input-group">
+                <h2> Numéro de Siret :</h2>
+                <input id="NumeroSiretCompte">
+            </div>
+            <div class="input-group">
+                <h2> Email :</h2>
+                <input id="EmailCompte">
+            </div>
+            <button id="Save_Update_Compte">Valider les modifications</button>
+            <button id="Update_MDP_Compte">Modifier le mot de passe du compte</button>
+            <button id="Delete_Compte">Supprimer le compte</button>
+            <button id="Close_Modal_Gestion_Compte">Fermer la fenêtre de gestion du compte</button>
         </div>
+    </div>
+
+    <!-- Fenêtre modale pour modifier le mot de passe du compte -->
+    <div id="modal_update_mdp_compte" class="modal_update_mdp_compte" style="display:none;">
+        <h2>Modifier le mot de passe du compte</h2>
+    <div class="modal-content-mdp-compte">
+        <input type="password" id="newPasswordCompte" placeholder="Nouveau mot de passe">
+        <input type="password" id="confirmPasswordCompte" placeholder="Confirmer le mot de passe">
+        <button id="Save_New_Mdp_Compte" >Valider</button>
+        <button id="Close_modal_update_mdp_compte" >Annuler</button>
+    </div>
     </div>
 
     <!-- gérer les actifs -->

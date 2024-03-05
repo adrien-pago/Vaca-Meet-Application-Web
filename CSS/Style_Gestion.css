@@ -75,48 +75,119 @@ body {
     padding: 2vh; /* Ajout de padding */
     overflow: auto; /* Permettre le défilement si nécessaire */
 }
+/* Styles pour le titre */
+.modal_Gestion_Compte  h1 {
+    margin-top: 1%;
+    text-align: center; 
+    font-size: x-large;   
+}
 
 /* Styles pour le contenu de la fenêtre modale de gestion de compte */
 .modal-content-Gestion-Compte {
     width: 100%;
     display: flex;
-    flex-direction: column; /* Éléments en colonne */
-    align-items: center; /* Centrer les éléments */
+    flex-direction: column; 
+    align-items: center; 
 }
 
-/* Styles pour les en-têtes des champs */
-.modal-content-Gestion-Compte h2 {
-    margin-bottom: 1vh; /* Ajuster la marge du bas */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 80%;
+    margin-bottom: 1%;
 }
 
-/* Styles pour les champs de saisie */
-.modal-content-Gestion-Compte input[type="text"] {
-    width: 80%; /* Largeur des champs de saisie */
-    margin-bottom: 1vh; /* Espacement entre les champs */
-    padding: 1vh; /* Ajout de rembourrage */
-    border: 1px solid #ccc; /* Bordure */
-    border-radius: 4px; /* Bordure arrondie */
+.input-group h2 {
+    white-space: nowrap; /* Empêche le titre de passer à la ligne */
+    font-size: medium; /* Ajustez selon les besoins pour garder le titre sur une ligne */
+    width: 30%; /* Définit une largeur fixe pour les titres */
+    margin-right: 2%; /* Espace entre le titre et le champ input */
+    text-align: right; /* Alignement du texte à droite pour proximité visuelle avec l'input */
+}
+
+.input-group input {
+    flex-grow: 1; /* Permet aux champs input de remplir l'espace restant */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
 }
 
 /* Styles pour les boutons */
-.modal-content-Gestion-Compte button {
-    margin-top: 2%;
-    width: 80%; /* Largeur des boutons */
-    margin-bottom: 1vh; /* Espacement entre les boutons */
-    padding: 1vh; /* Ajout de rembourrage */
-    background-color: #4CAF50; /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    border: none; /* Suppression de la bordure */
-    border-radius: 4px; /* Bordure arrondie */
-    cursor: pointer; /* Curseur de souris pointer */
-    transition: background-color 0.3s; /* Transition fluide de la couleur de fond */
+#Save_Update_Compte, #Update_MDP_Compte{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    margin-top: 1%;
+    width: 80%;
+    }
+    
+#Save_Update_Compte:hover, #Update_MDP_Compte:hover {
+background-color: #218838;
+box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
+transform: scale(1.05);
+margin-left: 3%;
+margin-bottom: 2%;
 }
 
-/* Au survol, changez la couleur de fond du bouton */
-.modal-content-Gestion-Compte button:hover {
-    background-color: #45a049;
+#Delete_Compte , #Close_Modal_Gestion_Compte {
+background-color: #dc3545;
+color: white;
+border: none;
+margin-left: 3%;
+margin-top: 1%;
+width: 80%;
 }
+    
+#Delete_Compte:hover, #Close_Modal_Gestion_Compte:hover {
+background-color: #c82333;
+box-shadow: 0px 0px 10px 0px rgba(220,53,69,0.75);
+transform: scale(1.05);
+margin-left: 3%;
+margin-bottom: 2%;
+}    
 /*-------------------------------- End Fenetre Modal Gestion Compte -------------------------------------- */
+
+/*----------------------- Fenetre Modal New MDP Compte --------------------------------- */
+.modal_update_mdp_compte {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: fixed;
+    top: 10%; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 30vh; 
+    max-width: 600px;
+    padding: 2vh; 
+    overflow: auto; 
+}
+
+.modal-content-mdp-compte {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-around; 
+}
+
+#confirmPasswordCompte, #newPasswordCompte {
+    width: 70%; 
+    margin: 1vh 0;
+}
+
+#Save_New_Mdp_Compte, #Close_modal_update_mdp_compte {
+    margin-top: 1vh;
+    font-size: 1.2vw;
+    padding: 1vh 2vw;
+}
+
+.modal_update_mdp_compte h2 {
+    margin-bottom: 2vh; 
+}
+/*-------------------------------- End Fenetre Modal New MDP Compte -------------------------------------- */
 
 /* Gestion Actif */
 .gestion_tableau{
@@ -187,6 +258,7 @@ transform: scale(1.05);
 margin-left: 3%;
 margin-bottom: 2%;
 }
+
 #refreshPlanning{
 background-color: #4CAF50;
 color: white;
