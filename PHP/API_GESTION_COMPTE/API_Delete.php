@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base de données
-include '../config.php';
+require_once 'config.php';
 
 try {
     // Requête SQL pour supprimer le camping

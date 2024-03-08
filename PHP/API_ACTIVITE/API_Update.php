@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require_once 'config.php';
 
 // Vérification des données POST
 if (!isset($_POST['id_camping']) || !isset($_POST['id_activite']) || !isset($_POST['libelle_act'])) {

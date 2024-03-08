@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require_once 'config.php';
 
 $libelle_act = $_POST['libelle_act'];
 $id_camping = $_POST['id_camping'];

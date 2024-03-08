@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require_once 'config.php';
 
 try {
     $lib_activite = $_POST['lib_activite'];

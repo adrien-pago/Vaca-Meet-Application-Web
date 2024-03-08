@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require_once 'config.php';
 
 try {
     // Récupérer l'ID du camping depuis la requête GET

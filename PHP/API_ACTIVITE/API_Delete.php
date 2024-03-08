@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require_once 'config.php';
 
 $id_activite = $_POST['id_activite'];
 
