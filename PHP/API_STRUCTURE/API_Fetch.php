@@ -17,7 +17,7 @@ try {
     $stmt->execute();
 
     $result = $stmt->get_result();
-    $results = $result->fetch_all(MYSQLI_ASSOC);
+    $results = $result->fetch_all(MYSQLI_ASSOC); 
     echo json_encode($results);
 
 } catch (Exception $e) {

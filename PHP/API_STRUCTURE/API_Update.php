@@ -13,20 +13,16 @@ $libelle_structure = $_POST['libelle_structure'];
 $nb_structure = $_POST['nb_structure'];
 
 try {
-
     $stmt = $conn->prepare("
         UPDATE STRUCTURE 
-        SET LIBELLE_STRUCTURE = :libelle_structure, NB_STRUCTURE = :nb_structure 
-        WHERE ID_STRUCTURE = :id_structure AND ID_CAMPING = :id_camping
-    ");  
+        SET LIBELLE_STRUCTURE = ?, NB_STRUCTURE = ? 
+        WHERE ID_STRUCTURE = ? AND ID_CAMPING = ?
+    ");
 
-    $stmt->bindParam("s",':libelle_structure', $libelle_structure);
-    $stmt->bindParam("i",':nb_structure', $nb_structure);  
-    $stmt->bindParam("i",':id_structure', $id_structure); 
-    $stmt->bindParam("i",':id_camping', $id_camping); 
+    $stmt->bind_param("siii", $libelle_structure, $nb_structure, $id_structure, $id_camping);
 
     // Début de la transaction
-    $conn->beginTransaction();
+    $conn->begin_transaction();
     
     $stmt->execute();
     
@@ -34,13 +30,12 @@ try {
     $conn->commit();
     
     echo "Updated successfully";
-} catch (PDOException $e) {
+} catch (Exception $e) {
     // Rollback de la transaction en cas d'erreur
-    $conn->rollBack();
+    $conn->rollback();
     echo "Erreur : " . $e->getMessage();
 }
 
 $stmt->close();
 $conn->close();
-
 ?>

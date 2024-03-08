@@ -10,13 +10,21 @@ try {
         echo json_encode(['error' => 'ID camping manquant']);
         exit;
     }
+
     // Préparer et exécuter la requête
-    $stmt = $conn->prepare("SELECT DISTINCT LIBELLE_ACT FROM ACTIVITE WHERE ID_CAMPING = :id_camping ORDER BY LIBELLE_ACT");
-    $stmt->bindParam("i",':id_camping', $id_camping);
+    $stmt = $conn->prepare("SELECT DISTINCT LIBELLE_ACT FROM ACTIVITE WHERE ID_CAMPING = ?");
+    $stmt->bind_param("i", $id_camping);
     $stmt->execute();
 
+    // Récupérer le résultat
+    $result = $stmt->get_result();
+
     // Récupérer tous les résultats
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $results = [];
+    while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+    }
+
     echo json_encode($results);
 
 } catch (Exception $e) {

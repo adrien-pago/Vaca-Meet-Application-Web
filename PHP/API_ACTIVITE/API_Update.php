@@ -4,9 +4,6 @@ include '../config.php';
 // Vérification des données POST
 if (!isset($_POST['id_camping']) || !isset($_POST['id_activite']) || !isset($_POST['libelle_act'])) {
     echo "Données POST manquantes";
-    echo($_POST['id_camping']) ;
-    echo($_POST['id_activite']) ;
-    echo($_POST['libelle_act']) ;
     exit;
 }
 
@@ -17,16 +14,14 @@ $libelle_act = $_POST['libelle_act'];
 try {
     $stmt = $conn->prepare("
         UPDATE ACTIVITE
-        SET LIBELLE_ACT = :libelle_act
-        WHERE ID_ACTIVITE = :id_activite AND ID_CAMPING = :id_camping
+        SET LIBELLE_ACT = ?
+        WHERE ID_ACTIVITE = ? AND ID_CAMPING = ?
     ");  
 
-    $stmt->bindParam("s",':libelle_act', $libelle_act);
-    $stmt->bindParam("i",':id_activite', $id_activite);
-    $stmt->bindParam("i",':id_camping', $id_camping);
+    $stmt->bind_param("sii", $libelle_act, $id_activite, $id_camping);
 
     // Début de la transaction
-    $conn->beginTransaction();
+    $conn->begin_transaction();
     
     $stmt->execute();
     
@@ -34,13 +29,12 @@ try {
     $conn->commit();
     
     echo "Updated successfully";
-} catch (PDOException $e) {
+} catch (Exception $e) {
     // Rollback de la transaction en cas d'erreur
-    $conn->rollBack();
+    $conn->rollback();
     echo "Erreur : " . $e->getMessage();
 }
 
 $stmt->close();
 $conn->close();
-
 ?>

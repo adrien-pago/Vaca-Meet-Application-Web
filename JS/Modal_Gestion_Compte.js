@@ -29,10 +29,17 @@ document.getElementById('GestionCompte').addEventListener('click', function() {
             return response.json();
         })
         .then(data => {
-            // Remplir les champs de formulaire avec les données reçues
-            document.getElementById('NumeroSiretCompte').value = data.NUM_SIRET ? data.NUM_SIRET : '';
-            document.getElementById('EmailCompte').value = data.EMAIL ? data.EMAIL : '';
+            // Vérifiez si des données ont été renvoyées
+            if (data.length > 0) {
+                // Remplir les champs de formulaire avec les données reçues du premier objet du tableau
+                document.getElementById('NumeroSiretCompte').value = data[0].NUM_SIRET ? data[0].NUM_SIRET : '';
+                document.getElementById('EmailCompte').value = data[0].EMAIL ? data[0].EMAIL : '';
+            } else {
+                // Afficher un message d'erreur si aucune donnée n'est renvoyée
+                console.error('Aucune donnée reçue pour le compte camping');
+            }
         })
+        
         .catch(error => {
             console.error('Erreur lors de la récupération des détails du compte camping:', error);
         });

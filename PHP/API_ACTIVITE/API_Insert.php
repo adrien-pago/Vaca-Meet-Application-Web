@@ -11,13 +11,12 @@ if (empty($libelle_act) || empty($id_camping)) {
 }
 
 try {
-    $stmt = $conn->prepare("INSERT INTO ACTIVITE (LIBELLE_ACT, ID_CAMPING) VALUES (:libelle_act, :id_camping)");
-    $stmt->bindParam("s",':libelle_act', $libelle_act);
-    $stmt->bindParam("i",':id_camping', $id_camping);
+    $stmt = $conn->prepare("INSERT INTO ACTIVITE (LIBELLE_ACT, ID_CAMPING) VALUES (?, ?)");
+    $stmt->bind_param("si", $libelle_act, $id_camping);
     $stmt->execute();
 
     echo "Inserted successfully";
-} catch (PDOException $e) {
+} catch (Exception $e) {
     echo "Erreur : " . $e->getMessage();
 }
 

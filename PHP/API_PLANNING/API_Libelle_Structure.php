@@ -9,11 +9,17 @@ try {
         exit;
     }
     
-    $stmt = $conn->prepare("SELECT ID_STRUCTURE, LIBELLE_STRUCTURE FROM STRUCTURE WHERE ID_CAMPING = :id_camping");
-    $stmt->bindParam("i",':id_camping', $id_camping);
+    $stmt = $conn->prepare("SELECT ID_STRUCTURE, LIBELLE_STRUCTURE FROM STRUCTURE WHERE ID_CAMPING = ?");
+    $stmt->bind_param("i", $id_camping);
     $stmt->execute();
+    $result = $stmt->get_result();
 
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Récupérer tous les résultats
+    $results = [];
+    while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+    }
+    
     echo json_encode($results);
 
 } catch (Exception $e) {
