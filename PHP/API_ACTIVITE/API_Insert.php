@@ -11,9 +11,6 @@ if (empty($libelle_act) || empty($id_camping)) {
 }
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $conn->prepare("INSERT INTO ACTIVITE (LIBELLE_ACT, ID_CAMPING) VALUES (:libelle_act, :id_camping)");
     $stmt->bindParam(':libelle_act', $libelle_act);
     $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);
@@ -24,4 +21,6 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 
+$stmt->close();
+$conn->close();
 ?>

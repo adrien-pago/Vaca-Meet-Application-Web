@@ -13,8 +13,6 @@ $libelle_structure = $_POST['libelle_structure'];
 $nb_structure = $_POST['nb_structure'];
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("
         UPDATE STRUCTURE 
@@ -41,5 +39,8 @@ try {
     $conn->rollBack();
     echo "Erreur : " . $e->getMessage();
 }
+
+$stmt->close();
+$conn->close();
 
 ?>

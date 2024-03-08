@@ -10,10 +10,6 @@ try {
         echo json_encode(['error' => 'ID camping manquant']);
         exit;
     }
-    
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     // Préparer et exécuter la requête
     $stmt = $conn->prepare("SELECT DISTINCT LIBELLE_ACT FROM ACTIVITE WHERE ID_CAMPING = :id_camping ORDER BY LIBELLE_ACT");
     $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);
@@ -28,4 +24,7 @@ try {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
 }
+
+$stmt->close();
+$conn->close();
 ?>

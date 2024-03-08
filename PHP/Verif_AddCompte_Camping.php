@@ -22,11 +22,6 @@ use PHPMailer\PHPMailer\Exception;
 $response_array = array();
 require_once 'config.php';
 
-$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-if ($conn->connect_error) {
-    die("La connexion à la base de données a échoué : " . $conn->connect_error);
-}
-
 $email = $_POST['email'];
 $NomCamping = $_POST['NomCamping'];
 $NumeroSiret = $_POST['NumSiretC'];

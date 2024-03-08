@@ -1,4 +1,5 @@
 <?php
+// redirection page connexion si session vide
 session_start();
 $campingId = $_SESSION['camping_id'];  // Récupérez l'ID du camping depuis la session
 $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depuis la session

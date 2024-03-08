@@ -10,9 +10,6 @@ try {
         throw new Exception('ID du camping manquant');
     }
 
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $conn->prepare("
         SELECT LIB_ACTIVITE, DATE_HEURE_DEBUT, DATE_HEURE_FIN 
         FROM EVENEMENT
@@ -33,4 +30,7 @@ try {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
 }
+
+$stmt->close();
+$conn->close();
 ?>

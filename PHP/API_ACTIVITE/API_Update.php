@@ -15,9 +15,6 @@ $id_activite = $_POST['id_activite'];
 $libelle_act = $_POST['libelle_act'];
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $conn->prepare("
         UPDATE ACTIVITE
         SET LIBELLE_ACT = :libelle_act
@@ -42,5 +39,8 @@ try {
     $conn->rollBack();
     echo "Erreur : " . $e->getMessage();
 }
+
+$stmt->close();
+$conn->close();
 
 ?>

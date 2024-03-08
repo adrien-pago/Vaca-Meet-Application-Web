@@ -6,12 +6,6 @@ error_reporting(E_ALL);
 // Se connecter à la base de données (Inclure les informations de connexion depuis le fichier de configuration)
 require_once 'config.php';
 
-// Se connecter à la base de données
-$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-if ($conn->connect_error) {
-    die("La connexion à la base de données a échoué : " . $conn->connect_error);
-}
-
 // Récupérer le jeton de confirmation à partir de l'URL
 $confirm_token = $_GET['token'];
 // Vérifier si le jeton de confirmation existe dans la base de données
@@ -36,5 +30,6 @@ if ($result->num_rows == 1) {
 }
 
 // Fermer la connexion à la base de données
+$stmt->close();
 $conn->close();
 ?>

@@ -8,9 +8,6 @@ try {
         throw new Exception('ID du camping manquant');
     }
 
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $conn->prepare("
         SELECT STRUCTURE.ID_STRUCTURE, CAMPING.NOM_CAMPING, STRUCTURE.LIBELLE_STRUCTURE, STRUCTURE.NB_STRUCTURE 
         FROM STRUCTURE 
@@ -28,4 +25,7 @@ try {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
 }
+
+$stmt->close();
+$conn->close();
 ?>

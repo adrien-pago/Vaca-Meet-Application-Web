@@ -20,11 +20,6 @@ $password = isset($_POST['PasswordCamping']) ? $_POST['PasswordCamping'] : '';
 
 require_once 'config.php';
 
-$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-if ($conn->connect_error) {
-    die("La connexion à la base de données a échoué : " . $conn->connect_error);
-}
-
 $sql = "SELECT * FROM CAMPING WHERE NOM_CAMPING=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $username);
