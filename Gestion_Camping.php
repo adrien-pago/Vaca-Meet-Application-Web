@@ -3,6 +3,7 @@
 session_start();
 $campingId = $_SESSION['camping_id'];  // Récupérez l'ID du camping depuis la session
 $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depuis la session
+
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
 </head>
 
 <body>
+    
     <!-- Formulaire caché pour récupérer l'ID et le nom du camping -->  
     <form id="campingForm" method="POST" style="display: none;">
         <input type="hidden" name="id" id="campingId" value="<?php echo $campingId; ?>">
@@ -41,21 +43,21 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         </div>
     </div>
 
-    <!-- Fenêtre modale pour la Gestion du compte -->
+  <!-- Fenêtre modale pour la Gestion du compte -->
     <div id="modal_Gestion_Compte" class="modal_Gestion_Compte" style="display:none;">
         <h1>Gestion du compte camping</h1>
         <div class="modal-content-Gestion-Compte">
             <div class="input-group">
                 <h2> Nom du camping :</h2>
-                <input id="NomCampingCompte">
+                <input id="NomCampingCompte" name="nomCamping" type="text">
             </div>
             <div class="input-group">
                 <h2> Numéro de Siret :</h2>
-                <input id="NumeroSiretCompte">
+                <input id="NumeroSiretCompte" name="num_siret" type="text">
             </div>
             <div class="input-group">
                 <h2> Email :</h2>
-                <input id="EmailCompte">
+                <input id="EmailCompte" name="email" type="email">
             </div>
             <button id="Save_Update_Compte">Valider les modifications</button>
             <button id="Update_MDP_Compte">Modifier le mot de passe du compte</button>
@@ -63,6 +65,8 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
             <button id="Close_Modal_Gestion_Compte">Fermer la fenêtre de gestion du compte</button>
         </div>
     </div>
+
+
 
     <!-- Fenêtre modale pour modifier le mot de passe du compte -->
     <div id="modal_update_mdp_compte" class="modal_update_mdp_compte" style="display:none;">

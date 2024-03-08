@@ -6,7 +6,7 @@ try {
         throw new Exception('ID du camping manquant');
     }
 
-    $stmt = $conn->prepare("SELECT NUM_SIRET, EMAIL FROM CAMPING WHERE ID_CAMPING = ?");
+    $stmt = $conn->prepare("SELECT NUM_SIRET, EMAIL, NOM_CAMPING FROM CAMPING WHERE ID_CAMPING = ?");
     $stmt->bind_param("i", $_POST['id_camping']); 
 
     $stmt->execute();
