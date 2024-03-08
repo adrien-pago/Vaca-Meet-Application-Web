@@ -63,6 +63,7 @@ form {
   padding: 20px;
   border: 2px solid #888;
   width: 80%; /* Largeur de la fenêtre modale */
+  height: 100%;
   max-width: 600px; /* Largeur maximale de la fenêtre modale */
 }
 

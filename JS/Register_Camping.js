@@ -17,55 +17,60 @@ function register_compte(event) {
   formData.append("password", password);
   formData.append("passwordConfirm", password);
 
-  // verif mot de passe strong et doublons confirme
+  // Vérification si les mots de passe correspondent
+  if (password !== passwordconfirm) {
+    alert("Les mots de passe ne correspondent pas !");
+    return;
+  }
+
+  // Vérification de la force du mot de passe
   function checkPasswordStrength(password) {
     // Initialize variables
     var strength = 0;
-    var tips = "Le mot de passe doit être :";
-  
+    var tips = "Le mot de passe doit :";
+
     // Check password length
     if (password.length < 8) {
-      tips += "PLus grand que 8 caractère  ";
+      tips += "Etre plus grand que 8 caractères , ";
     } else {
       strength += 1;
     }
-  
+
     // Check for mixed case
     if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
       strength += 1;
     } else {
-      tips += "";
+      tips += "Contenir au moins une Majuscule et une minuscule, ";
     }
-  
+
     // Check for numbers
     if (password.match(/\d/)) {
       strength += 1;
     } else {
-      tips += "Include at least one number. ";
+      tips += "Inclure au moins un chiffre, ";
     }
-  
+
     // Check for special characters
     if (password.match(/[^a-zA-Z\d]/)) {
       strength += 1;
     } else {
-      tips += "Include at least one special character. ";
+      tips += "Inclure au moins un caractère spécial, ";
     }
-  
+
     // Return results
-    if (strength < 2) {
-      return "Easy to guess. " + tips;
-    } else if (strength === 2) {
-      return "Medium difficulty. " + tips;
-    } else if (strength === 3) {
-      return "Difficult. " + tips;
+    if (strength < 3) {
+      alert("Mot de passe incorrect. " + tips);
+      return false;
     } else {
-      return "Extremely difficult. " + tips;
+      return true;
     }
   }
-  checkPasswordStrength(password)
 
-  // Verif si mot de passe est bine identique à la verif
-
+  if (!checkPasswordStrength(password)) {
+    // Remettre le focus sur le premier champ
+    document.getElementById("email").focus();
+    return;
+  }
 
   // Requête AJAX
   let xhr = new XMLHttpRequest();
@@ -84,6 +89,7 @@ function register_compte(event) {
           document.getElementById("NomCamping").value = "";
           document.getElementById("NumSiretC").value = "";
           document.getElementById("password").value = "";
+          document.getElementById("passwordConfirm").value = "";
         } else {
           alert(response.message);
         }
