@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 $libelle_act = $_POST['libelle_act'];
 $id_camping = $_POST['id_camping'];
@@ -12,8 +12,8 @@ if (empty($libelle_act) || empty($id_camping)) {
 
 try {
     $stmt = $conn->prepare("INSERT INTO ACTIVITE (LIBELLE_ACT, ID_CAMPING) VALUES (:libelle_act, :id_camping)");
-    $stmt->bindParam(':libelle_act', $libelle_act);
-    $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);
+    $stmt->bindParam("s",':libelle_act', $libelle_act);
+    $stmt->bindParam("i",':id_camping', $id_camping);
     $stmt->execute();
 
     echo "Inserted successfully";

@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 // Vérification des données POST
 if (!isset($_POST['id_camping']) || !isset($_POST['id_activite']) || !isset($_POST['libelle_act'])) {
@@ -21,9 +21,9 @@ try {
         WHERE ID_ACTIVITE = :id_activite AND ID_CAMPING = :id_camping
     ");  
 
-    $stmt->bindParam(':libelle_act', $libelle_act);
-    $stmt->bindParam(':id_activite', $id_activite, PDO::PARAM_INT);
-    $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);
+    $stmt->bindParam("s",':libelle_act', $libelle_act);
+    $stmt->bindParam("i",':id_activite', $id_activite);
+    $stmt->bindParam("i",':id_camping', $id_camping);
 
     // Début de la transaction
     $conn->beginTransaction();

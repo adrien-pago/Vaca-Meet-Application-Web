@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 try {
     $id_camping = isset($_GET['id_camping']) ? $_GET['id_camping'] : null;
@@ -10,7 +10,7 @@ try {
     }
     
     $stmt = $conn->prepare("SELECT ID_STRUCTURE, LIBELLE_STRUCTURE FROM STRUCTURE WHERE ID_CAMPING = :id_camping");
-    $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);
+    $stmt->bindParam("i",':id_camping', $id_camping);
     $stmt->execute();
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

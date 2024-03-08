@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 try {
     $id_camping = $_GET['id_camping'];
@@ -17,9 +17,9 @@ try {
         AND DATE_HEURE_DEBUT >= :dateDebut 
         AND DATE_HEURE_FIN <= :dateFin
     ");
-    $stmt->bindParam(':id_camping', $id_camping);
-    $stmt->bindParam(':dateDebut', $dateDebut);
-    $stmt->bindParam(':dateFin', $dateFin);
+    $stmt->bindParam("i",':id_camping', $id_camping);
+    $stmt->bindParam("d",':dateDebut', $dateDebut);
+    $stmt->bindParam("d",':dateFin', $dateFin);
     $stmt->execute();
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

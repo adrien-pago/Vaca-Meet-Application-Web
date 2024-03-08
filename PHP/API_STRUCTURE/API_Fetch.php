@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 try {
     $id_camping = $_GET['id_camping'];
@@ -8,16 +8,16 @@ try {
         throw new Exception('ID du camping manquant');
     }
 
-    $stmt = $conn->prepare("
-        SELECT STRUCTURE.ID_STRUCTURE, CAMPING.NOM_CAMPING, STRUCTURE.LIBELLE_STRUCTURE, STRUCTURE.NB_STRUCTURE 
+    $stmt = $conn->prepare("SELECT STRUCTURE.ID_STRUCTURE, CAMPING.NOM_CAMPING, STRUCTURE.LIBELLE_STRUCTURE, STRUCTURE.NB_STRUCTURE 
         FROM STRUCTURE 
         JOIN CAMPING ON CAMPING.ID_CAMPING = STRUCTURE.ID_CAMPING 
-        WHERE STRUCTURE.ID_CAMPING = :id_camping
-    ");
-    $stmt->bindParam(':id_camping', $id_camping);
+        WHERE STRUCTURE.ID_CAMPING = ?");
+        
+    $stmt->bind_param("i", $id_camping);
     $stmt->execute();
 
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $stmt->get_result();
+    $results = $result->fetch_all(MYSQLI_ASSOC);
     echo json_encode($results);
 
 } catch (Exception $e) {

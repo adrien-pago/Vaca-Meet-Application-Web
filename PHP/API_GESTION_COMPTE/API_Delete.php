@@ -1,11 +1,10 @@
 <?php
-// Connexion à la base de données
-require_once 'config.php';
+include '../config.php';
 
 try {
     // Requête SQL pour supprimer le camping
     $stmt = $conn->prepare("DELETE FROM CAMPING WHERE ID_CAMPING = :id_camping");
-    $stmt->bindParam(':id_camping', $_POST['id_camping']);
+    $stmt->bindParam("i",':id_camping', $_POST['id_camping']);
     $stmt->execute();
 
     // Retourner une réponse de succès

@@ -1,14 +1,13 @@
 <?php
-// Connexion à la base de données
-require_once 'config.php';
+include '../config.php';
 
 try {
     // Requête SQL pour mettre à jour les informations du camping
     $stmt = $conn->prepare("UPDATE CAMPING SET NOM_CAMPING = :nom, NUM_SIRET = :num_siret, EMAIL = :email WHERE ID_CAMPING = :id_camping");
-    $stmt->bindParam(':id_camping', $_POST['id_camping']);
-    $stmt->bindParam(':nom', $_POST['nom']);
-    $stmt->bindParam(':num_siret', $_POST['num_siret']);
-    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam("i",':id_camping', $_POST['id_camping']);
+    $stmt->bindParam("s",':nom', $_POST['nom']);
+    $stmt->bindParam("i",':num_siret', $_POST['num_siret']);
+    $stmt->bindParam("s",':email', $_POST['email']);
     $stmt->execute();
 
     // Retourner une réponse de succès

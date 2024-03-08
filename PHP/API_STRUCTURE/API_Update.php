@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 // Vérification des données POST
 if (!isset($_POST['id_camping']) || !isset($_POST['id_structure']) || !isset($_POST['libelle_structure']) || !isset($_POST['nb_structure'])) {
@@ -20,10 +20,10 @@ try {
         WHERE ID_STRUCTURE = :id_structure AND ID_CAMPING = :id_camping
     ");  
 
-    $stmt->bindParam(':libelle_structure', $libelle_structure);
-    $stmt->bindParam(':nb_structure', $nb_structure, PDO::PARAM_INT);  // Assurez-vous que nb_structure est traité comme un entier
-    $stmt->bindParam(':id_structure', $id_structure, PDO::PARAM_INT);  // Assurez-vous que id_structure est traité comme un entier
-    $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);  // Assurez-vous que id_camping est traité comme un entier
+    $stmt->bindParam("s",':libelle_structure', $libelle_structure);
+    $stmt->bindParam("i",':nb_structure', $nb_structure);  
+    $stmt->bindParam("i",':id_structure', $id_structure); 
+    $stmt->bindParam("i",':id_camping', $id_camping); 
 
     // Début de la transaction
     $conn->beginTransaction();

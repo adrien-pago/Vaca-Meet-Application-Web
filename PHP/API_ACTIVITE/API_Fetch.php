@@ -1,26 +1,19 @@
 <?php
-require_once 'config.php';
-
-$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-if ($conn->connect_error) {
-    die("La connexion à la base de données a échoué : " . $conn->connect_error);
-}
+include '../config.php';
 
 try {
-    
     $id_camping = $_GET['id_camping'];
-
+    
     if (empty($id_camping)) {
         throw new Exception('ID du camping manquant');
     }
 
-    $stmt = $conn->prepare("
-    SELECT ID_ACTIVITE ,LIBELLE_ACT FROM ACTIVITE WHERE ID_CAMPING = :id_camping 
-    ");
-    $stmt->bindParam(':id_camping', $id_camping);
+    $stmt = $conn->prepare("SELECT ID_ACTIVITE, LIBELLE_ACT FROM ACTIVITE WHERE ID_CAMPING = ?");
+    $stmt->bind_param("i", $id_camping);
     $stmt->execute();
 
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $stmt->get_result();
+    $results = $result->fetch_all(MYSQLI_ASSOC);
     echo json_encode($results);
 
 } catch (Exception $e) {

@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+include '../config.php';
 
 try {
     // Récupérer l'ID du camping depuis la requête GET
@@ -12,7 +12,7 @@ try {
     }
     // Préparer et exécuter la requête
     $stmt = $conn->prepare("SELECT DISTINCT LIBELLE_ACT FROM ACTIVITE WHERE ID_CAMPING = :id_camping ORDER BY LIBELLE_ACT");
-    $stmt->bindParam(':id_camping', $id_camping, PDO::PARAM_INT);
+    $stmt->bindParam("i",':id_camping', $id_camping);
     $stmt->execute();
 
     // Récupérer tous les résultats

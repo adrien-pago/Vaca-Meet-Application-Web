@@ -1,11 +1,10 @@
 <?php
-// Connexion à la base de données
-require_once 'config.php';
+include '../config.php';
 
 try {
     // Requête SQL pour récupérer les informations du camping
     $stmt = $conn->prepare("SELECT NUM_SIRET, EMAIL FROM CAMPING WHERE ID_CAMPING = :id_camping");
-    $stmt->bindParam(':id_camping', $_POST['id_camping']); 
+    $stmt->bindParam("i",':id_camping', $_POST['id_camping']); 
 
     $stmt->execute();
 

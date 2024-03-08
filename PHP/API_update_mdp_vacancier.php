@@ -12,8 +12,8 @@
 
         // Mise à jour du mot de passe
         $stmt = $conn->prepare("UPDATE CAMPING SET MDP_VACANCIER = :newPassword WHERE ID_CAMPING = :idCamping");
-        $stmt->bindParam(':newPassword', $newPassword, PDO::PARAM_STR);
-        $stmt->bindParam(':idCamping', $campingId, PDO::PARAM_INT);
+        $stmt->bindParam("s",':newPassword', $newPassword);
+        $stmt->bindParam("i",':idCamping', $campingId);
         $stmt->execute();
 
         echo "Mot de passe mis à jour avec succès.";
