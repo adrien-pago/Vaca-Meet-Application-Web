@@ -1,7 +1,13 @@
 <?php
 require_once 'config.php';
 
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+if ($conn->connect_error) {
+    die("La connexion à la base de données a échoué : " . $conn->connect_error);
+}
+
 try {
+    
     $id_camping = $_GET['id_camping'];
 
     if (empty($id_camping)) {
