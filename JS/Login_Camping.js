@@ -22,7 +22,7 @@ function login() {
           var response = JSON.parse(xhr.responseText);
           if (response.status === 'success' && response.id) {
               // Créer un formulaire
-              var form = document.createElement('form');
+              var form = document.createElement('form'); // formulaire pour rediriger avec des info comme une session
               form.method = 'POST';
               form.action = 'Gestion_Camping.php';
 
@@ -41,7 +41,7 @@ function login() {
 
               // Ajouter le formulaire au corps de la page et le soumettre
               document.body.appendChild(form);
-              form.submit();
+              form.submit(); // redirection vers lenvoi du formulaire
           } else {
               // Sinon, afficher un message d'erreur
               alert(response.message);

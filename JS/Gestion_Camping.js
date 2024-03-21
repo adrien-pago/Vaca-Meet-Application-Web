@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         mdpVacancierButton.addEventListener('click', function() {
             document.getElementById('modal_md_vacancier').style.display = 'block';
         });
-    } else {
-        console.error("L'élément 'MDP_Vacancier' est introuvable dans le DOM.");
-    }
+    } 
 
     //////////////////// Gestion fermeture fenêtre modale mdp vacancier /////////////////////////////
     var closeButton = document.getElementById('Close_Modal_mdp_Vacancier');

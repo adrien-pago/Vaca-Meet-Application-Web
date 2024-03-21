@@ -63,15 +63,15 @@ body {
 
 /*----------------------- Fenetre Modal Gestion Compte --------------------------------- */
 .modal_Gestion_Compte {
+    z-index: 100;
     background-color: #fefefe;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     position: fixed;
-    top: 10%; /* Centrer un peu plus bas */
+    top: 10%; 
     left: 50%;
     transform: translateX(-50%);
     width: 80vw;
-    max-width: 600px;
     padding: 2vh; /* Ajout de padding */
     overflow: auto; /* Permettre le défilement si nécessaire */
 }
@@ -114,7 +114,7 @@ body {
 }
 
 /* Styles pour les boutons */
-#Save_Update_Compte, #Update_MDP_Compte{
+#Save_Update_Compte, #Update_MDP_Compte, #Save_New_Mdp_Compte{
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -151,18 +151,17 @@ margin-bottom: 2%;
 
 /*----------------------- Fenetre Modal New MDP Compte --------------------------------- */
 .modal_update_mdp_compte {
+    z-index: 200;
     background-color: #fefefe;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     position: fixed;
-    top: 10%; 
+    top: 15%; 
     left: 50%;
     transform: translateX(-50%);
     width: 80vw;
-    height: 30vh; 
-    max-width: 600px;
     padding: 2vh; 
-    overflow: auto; 
+    overflow: auto; /* Permettre le défilement si nécessaire */
 }
 
 .modal-content-mdp-compte {
@@ -175,17 +174,44 @@ margin-bottom: 2%;
 
 #confirmPasswordCompte, #newPasswordCompte {
     width: 70%; 
-    margin: 1vh 0;
+    margin-left: 3%;
+    margin-top: 2%;
 }
 
-#Save_New_Mdp_Compte, #Close_modal_update_mdp_compte {
-    margin-top: 1vh;
-    font-size: 1.2vw;
-    padding: 1vh 2vw;
+#Save_New_Mdp_Compte {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    margin-top: 1%;
+    width: 70%;
 }
+
+#Save_New_Mdp_Compte:hover {
+    background-color: #218838;
+    box-shadow: 0px 0px 10px 0px rgba(40,167,69,0.75);
+    transform: scale(1.05);
+}
+
+#Close_modal_update_mdp_compte {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 70%;
+}
+
+#Close_modal_update_mdp_compte:hover{
+    background-color: #c82333;
+    box-shadow: 0px 0px 10px 0px rgba(220,53,69,0.75);
+    transform: scale(1.05);
+    }   
 
 .modal_update_mdp_compte h2 {
-    margin-bottom: 2vh; 
+    margin-bottom: 2vh;
+    text-align: center; 
 }
 /*-------------------------------- End Fenetre Modal New MDP Compte -------------------------------------- */
 
