@@ -3,7 +3,6 @@
 session_start();
 $campingId = $_SESSION['camping_id'];  // Récupérez l'ID du camping depuis la session
 $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depuis la session
-
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +15,6 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
 </head>
 
 <body>
-    
     <!-- Formulaire caché pour récupérer l'ID et le nom du camping -->  
     <form id="campingForm" method="POST" style="display: none;">
         <input type="hidden" name="id" id="campingId" value="<?php echo $campingId; ?>">
@@ -66,15 +64,17 @@ $campingName = $_SESSION['camping_name'];  // Récupérez le nom du camping depu
         </div>
     </div>
 
+
+
     <!-- Fenêtre modale pour modifier le mot de passe du compte -->
     <div id="modal_update_mdp_compte" class="modal_update_mdp_compte" style="display:none;">
         <h2>Modifier le mot de passe du compte</h2>
-        <div class="modal-content-mdp-compte">
-            <input type="password" id="newPasswordCompte" placeholder="Nouveau mot de passe">
-            <input type="password" id="confirmPasswordCompte" placeholder="Confirmer le mot de passe">
-            <button id="Save_New_Mdp_Compte" >Valider</button>
-            <button id="Close_modal_update_mdp_compte" >Annuler</button>
-        </div>
+    <div class="modal-content-mdp-compte">
+        <input type="password" id="newPasswordCompte" placeholder="Nouveau mot de passe">
+        <input type="password" id="confirmPasswordCompte" placeholder="Confirmer le mot de passe">
+        <button id="Save_New_Mdp_Compte" >Valider</button>
+        <button id="Close_modal_update_mdp_compte" >Annuler</button>
+    </div>
     </div>
 
     <!-- gérer les actifs -->
